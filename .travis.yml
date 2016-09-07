@@ -1,0 +1,15 @@
+language: node_js
+
+node_js:
+  - '4.2.6'
+
+brances:
+  only:
+    - master
+
+before_install:
+  - currentfolder=${PWD##*/}
+  - if [ "$currentfolder" != 'electrify' ]; then cd .. && eval "mv $currentfolder electrify" && cd electrify; fi
+
+script:
+  - npm run test
