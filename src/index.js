@@ -35,7 +35,7 @@ domready(function() {
       .attr('transform', 'translate(' + width / 2 + ',' + height * .52 + ')')
 
   var paletteDiv = d3.select('.palette-wrap')
-    .style('top', String(window.innerHeight - (schemes.length - 1) * 56 - 16) + 'px')
+    .style('top', '115px')
     .selectAll('.palette')
     .data(schemes)
     .enter()
