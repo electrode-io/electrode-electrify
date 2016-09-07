@@ -71,9 +71,10 @@ more than expected.
 Nothing particularly special about these palettes – colored for legibility and
 aesthetics respectively.
 
-## Other useful bundle viewers ##
-- [disc](https://github.com/hughsk/disc) (Helpful for analyzing **browserify** projects and a huge inspiration for electrify, used *disc* extensively in my past **browserify** based projects)
-- [inspectpack](https://github.com/FormidableLabs/inspectpack)
+## Other useful bundle/stats viewers ##
+- [disc-browserify](https://github.com/hughsk/disc) (Helpful for analyzing **browserify** projects and a huge inspiration for electrify, used *disc* extensively in my past **browserify** based projects)
+- [webpack-stats-plugin](https://github.com/FormidableLabs/webpack-stats-plugin)
 - [webpack-bundle-size-analyzer](https://github.com/robertknight/webpack-bundle-size-analyzer)
 - [webpack-visualizer](https://github.com/chrisbateman/webpack-visualizer)
 - [webpack-chart](https://github.com/alexkuz/webpack-chart)
+- [stats-webpack-plugin](https://github.com/unindented/stats-webpack-plugin)
