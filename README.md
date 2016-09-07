@@ -5,6 +5,8 @@ Electrify is a tool for analyzing the module tree of
 for catching large and/or duplicate modules which might be either bloating up
 your bundle or slowing down the build process.
 
+![screencast](https://cloud.githubusercontent.com/assets/360041/18318796/ea0ddae4-74d7-11e6-89cb-08e02e4b1683.gif)
+
 ## Installation ##
 
 Electrify lives on [npm](https://www.npmjs.com/package/electrode-electrify), so if you haven't already
