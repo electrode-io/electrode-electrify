@@ -1,4 +1,6 @@
-# electrify [![Build Status](https://travis-ci.com/electrode-io/electrify.svg?token=9dyHRhqfyW5wqcpfkeLr&branch=master)](https://travis-ci.com/electrode-io/electrify)
+[![Build Status](https://travis-ci.com/electrode-io/electrify.svg?token=9dyHRhqfyW5wqcpfkeLr&branch=master)](https://travis-ci.com/electrode-io/electrify)
+
+# electrify 
 
 Electrify is a tool for analyzing the module tree of
 [electrode-io/webpack](https://github.com/webpack/docs/wiki/node.js-api#stats) project bundles. It's especially handy
