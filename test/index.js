@@ -1,1 +1,1 @@
-require('./json')
+require('./bundle')
