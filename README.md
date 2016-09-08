@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.com/electrode-io/electrify.svg?token=9dyHRhqfyW5wqcpfkeLr&branch=master)](https://travis-ci.com/electrode-io/electrify)
 
-# electrify 
+# electrify
 
 Electrify is a tool for analyzing the module tree of
 [electrode-io/webpack](https://github.com/webpack/docs/wiki/node.js-api#stats) project bundles. It's especially handy
@@ -27,7 +27,6 @@ electrify [stats-bundle(s)...] {options}
 
 Options:
   -h, --help    Displays these instructions.
-  -o, --output  Output path of the bundle. Defaults to stdout.
   -O, --open    Opens viewer in a new browser window automatically
   -m, --mode    the default file scale mode to display: should be
                 either "count" or "size". Default: size
@@ -77,7 +76,6 @@ aesthetics respectively.
 
 ## Other useful bundle/stats viewers ##
 - [disc-browserify](https://github.com/hughsk/disc) (Helpful for analyzing **browserify** projects and a huge inspiration for electrify, used *disc* extensively in my past **browserify** based projects)
-- [webpack-stats-plugin](https://github.com/FormidableLabs/webpack-stats-plugin)
 - [webpack-bundle-size-analyzer](https://github.com/robertknight/webpack-bundle-size-analyzer)
 - [webpack-visualizer](https://github.com/chrisbateman/webpack-visualizer)
 - [webpack-chart](https://github.com/alexkuz/webpack-chart)
