@@ -55,7 +55,7 @@ specific features of your bundle:
 
 ### Structure Highlights ###
 
-![Structure Highlights](http://i.imgur.com/LO6Gio3.png)
+![Structure Highlights](http://i.imgur.com/Ajp20Jxm.png)
 
 Highlights `node_modules` directories as green and `lib` directories as orange.
 This makes it easier to scan for "kitchen sink" modules or modules with lots of
@@ -63,13 +63,15 @@ dependencies.
 
 ### File Types ###
 
-![File Types](http://i.imgur.com/A8zDrbN.png)
+![File Types](http://i.imgur.com/oY5euGAm.png)
 
 Highlights each file type (e.g. `.js`, `.css`, etc.) a different color. Helpful
 for tracking down code generated from a transform that's bloating up your bundle
 more than expected.
 
 ### Original/Pastel ###
+
+![Pastel](http://i.imgur.com/ajAoqePm.png)
 
 Nothing particularly special about these palettes – colored for legibility and
 aesthetics respectively.
