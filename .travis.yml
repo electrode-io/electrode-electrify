@@ -9,7 +9,7 @@ brances:
 
 before_install:
   - currentfolder=${PWD##*/}
-  - if [ "$currentfolder" != 'electrify' ]; then cd .. && eval "mv $currentfolder electrify" && cd electrify; fi
+  - if [ "$currentfolder" != 'electrode-electrify' ]; then cd .. && eval "mv $currentfolder electrode-electrify" && cd electrode-electrify; fi
 
 script:
   - npm run test
