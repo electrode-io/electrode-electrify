@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/electrode-io/electrify.svg?token=9dyHRhqfyW5wqcpfkeLr&branch=master)](https://travis-ci.com/electrode-io/electrify)
+[![Build Status](https://travis-ci.org/electrode-io/electrode-electrify.svg?branch=master)](https://travis-ci.org/electrode-io/electrode-electrify)
 
 # electrify
 
