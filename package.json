@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/electrode-io/electrify"
+    "url": "https://github.com/electrode-io/electrode-electrify.git"
   },
   "bin": {
     "electrify": "bin/electrify"
