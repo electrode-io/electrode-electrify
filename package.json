@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "prepublish": "mkdir -p build && npm run browserify && npm run rework && npm run bundle-demo",
-    "browserify": "browserify src/index.js | uglifyjs -c 2> /dev/null > build/bundle.js",
+    "browserify": "browserify src/index.js -t [ babelify --presets [ es2015 react ] ] | uglifyjs -c 2> /dev/null > build/bundle.js",
     "bundle-demo": "node lib/bundle-demo > index.html",
     "build-fixture": "browserify --full-paths ./test/fixture/index.js > ./test/fixture/bundle.js && browserify ./test/fixture/index.js > ./test/fixture/bundle-no-full.js",
     "demo": "npm run prepublish && opener index.html",
@@ -40,6 +40,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^1.1.20140319",
+    "babelify": "^7.3.0",
     "browserify": "^3.33.0",
     "btoa": "^1.1.1",
     "clean-css": "^2.1.6",

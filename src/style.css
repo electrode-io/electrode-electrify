@@ -180,3 +180,11 @@ pre, code {
   position: relative;
   display: block;
 }
+
+.search-box {
+  top: 20px;
+  left: 100px;
+  width: 50%;
+  position: absolute;
+  font-size: large;
+}
