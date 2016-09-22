@@ -88,8 +88,12 @@ domready(function() {
       d.el = this
     })
 
+  let found = [];
   const _select = (node, selector) => {
     node.enabled = selector(node);
+    if (node.enabled) {
+      found.push(node);
+    }
     if (node.children) {
       for (let c of node.children) {
         _select(c, selector);
@@ -101,8 +105,20 @@ domready(function() {
   d3.select('#search').on('keyup', function() {
     const text = this.value.replace(/^\s+/, "").replace(/\s+$/, "")
     if (text.length > 0) {
+      found = [];
       const re = new RegExp(text, 'i');
       _select(root, (node) => node.name.match(re) !== null);
+      if (found.length === 1) {
+        title.text(found[0].name)
+        size.text(pretty(found[0].size))
+      } else {
+        title.text("Multiple found")
+        let completeSize = 0
+        for (let n of found) {
+          completeSize += n.size;
+        }
+        size.text(`${pretty(completeSize)} total`)
+      }
     } else {
       _select(root, () => true);
     }
