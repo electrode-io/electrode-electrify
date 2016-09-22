@@ -1,6 +1,4 @@
-[![Build Status](https://travis-ci.org/electrode-io/electrode-electrify.svg?branch=master)](https://travis-ci.org/electrode-io/electrode-electrify)
-
-# electrify
+# electrify [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
 
 Electrify is a tool for analyzing the module tree of
 [electrode-io/webpack](https://github.com/webpack/docs/wiki/node.js-api#stats) project bundles. It's especially handy
@@ -82,3 +80,11 @@ aesthetics respectively.
 - [webpack-visualizer](https://github.com/chrisbateman/webpack-visualizer)
 - [webpack-chart](https://github.com/alexkuz/webpack-chart)
 - [stats-webpack-plugin](https://github.com/unindented/stats-webpack-plugin)
+
+
+[npm-image]: https://badge.fury.io/js/electrode-electrify.svg
+[npm-url]: https://npmjs.org/package/electrode-electrify
+[travis-image]: https://travis-ci.org/electrode-io/electrode-electrify.svg?branch=master
+[travis-url]: https://travis-ci.org/electrode-io/electrode-electrify
+[daviddm-image]: https://david-dm.org/electrode-io/electrode-electrify.svg?theme=shields.io
+[daviddm-url]: https://david-dm.org/electrode-io/electrode-electrify
