@@ -183,14 +183,14 @@ pre, code {
 
 .search-box {
   top: 20px;
-  left: 100px;
-  width: 50%;
+  margin-left: 20%;
+  width: 60%;
   position: absolute;
   font-size: 1rem;
   line-height: 1.25;
   padding: 0.5rem 0.75rem;
   color: #55595c;
-  background-color: #fff;
+  background-color: #273c4c;
   border: 1px solid rgba(0,0,0,.15);
   border-radius: .25rem;
 }
