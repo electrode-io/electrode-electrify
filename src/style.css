@@ -83,7 +83,7 @@ h2 {
 .modes {
   position: absolute;
   right: 16px;
-  top: 16px;
+  top: 65px;
 }
 
 .scale-list {
@@ -183,8 +183,8 @@ pre, code {
 
 .search-box {
   top: 20px;
-  margin-left: 20%;
-  width: 60%;
+  margin-left: 82%;
+  width: 15%;
   position: absolute;
   font-size: 1rem;
   line-height: 1.25;
