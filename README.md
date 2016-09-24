@@ -74,7 +74,7 @@ more than expected.
 Nothing particularly special about these palettes – colored for legibility and
 aesthetics respectively.
 
-## Search
+## Search By Filename
 Search by filename to get to the exact location of the file along with size that file is contributing to the Javascript bundle. Props to [@jherr](https://github.com/jherr) for implementing the Search functionality.
 
 ## Other useful bundle/stats viewers ##
