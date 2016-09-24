@@ -74,6 +74,9 @@ more than expected.
 Nothing particularly special about these palettes – colored for legibility and
 aesthetics respectively.
 
+## Search
+Search by filename to get to the exact location of the file along with size that file is contributing to the Javascript bundle. Props to [@jherr](https://github.com/jherr) for implementing the Search functionality.
+
 ## Other useful bundle/stats viewers ##
 - [disc-browserify](https://github.com/hughsk/disc) (Helpful for analyzing **browserify** projects and a huge inspiration for electrify, used *disc* extensively in my past **browserify** based projects)
 - [webpack-bundle-size-analyzer](https://github.com/robertknight/webpack-bundle-size-analyzer)
