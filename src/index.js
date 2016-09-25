@@ -180,6 +180,9 @@ domready(function() {
     .ease('elastic', 2, 1)
     .delay((d, i) => d.x * 100 + (i % 4) * 250 + d.y / maxdepth * 0.25)
     .attr('d', arc)
+    .each('interrupt', () => {
+      d3.select('#search').transition().duration(200).style('opacity', 1)
+    })
     .each('end', () => {
       ptrans--;
     })
