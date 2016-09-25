@@ -1,15 +1,17 @@
 # electrify [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
 
-Electrify is a tool for analyzing the module tree of
-[electrode-io/webpack](https://github.com/webpack/docs/wiki/node.js-api#stats) project bundles. It's especially handy
-for catching large and/or duplicate modules which might be either bloating up
-your bundle or slowing down the build process.
+## What is Electrify? ##
+
+Electrify is an webpack visualizer tool for visualizing and analyzing Webpack bundles, it is a UI tool based on D3.js for visualizing the module tree of
+[electrode + webpack](https://github.com/webpack/docs/wiki/node.js-api#stats) project bundles. It's especially handy
+for catching large and/or duplicate modules which might be either bloating up your bundle or slowing down the build process.
+
 
 ![screencast](./img/screencast.gif)
 
 ## Installation ##
 
-Electrify lives on [npm](https://www.npmjs.com/package/electrode-electrify), so if you haven't already
+Electrify lives on [npm](https://www.npmjs.com/package/electrode-electrify), so if you haven't installed npm already
 make sure you have [node](http://nodejs.org/) installed on your machine first.
 
 Installing should then be as easy as:
@@ -91,3 +93,5 @@ Search by filename to get to the exact location of the file along with size that
 [travis-url]: https://travis-ci.org/electrode-io/electrode-electrify
 [daviddm-image]: https://david-dm.org/electrode-io/electrode-electrify.svg?theme=shields.io
 [daviddm-url]: https://david-dm.org/electrode-io/electrode-electrify
+
+Built with :heart: by [Team Electrode](https://github.com/orgs/electrode-io/people) @WalmartLabs.
