@@ -79,6 +79,12 @@ aesthetics respectively.
 ## Search By Filename
 Search by filename to get to the exact location of the file along with size that file is contributing to the Javascript bundle. Props to [@jherr](https://github.com/jherr) for implementing the Search functionality.
 
+## License
+
+Apache-2.0 © WalmartLabs
+<br>
+Built with :heart: by [Team Electrode](https://github.com/orgs/electrode-io/people) @WalmartLabs.
+
 ## Other useful bundle/stats viewers ##
 - [disc-browserify](https://github.com/hughsk/disc) (Helpful for analyzing **browserify** projects and a huge inspiration for electrify, used *disc* extensively in my past **browserify** based projects)
 - [webpack-bundle-size-analyzer](https://github.com/robertknight/webpack-bundle-size-analyzer)
@@ -94,4 +100,5 @@ Search by filename to get to the exact location of the file along with size that
 [daviddm-image]: https://david-dm.org/electrode-io/electrode-electrify.svg?theme=shields.io
 [daviddm-url]: https://david-dm.org/electrode-io/electrode-electrify
 
-Built with :heart: by [Team Electrode](https://github.com/orgs/electrode-io/people) @WalmartLabs.
+
+
