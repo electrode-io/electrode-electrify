@@ -1,4 +1,5 @@
-# electrify [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
+# electrify [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![NPM Downloads][downloads-image]][downloads-url] [![Dependency Status][daviddm-image]][daviddm-url]
+
 
 ## What is Electrify? ##
 
@@ -100,3 +101,5 @@ Built with :heart: by [Team Electrode](https://github.com/orgs/electrode-io/peop
 [travis-url]: https://travis-ci.org/electrode-io/electrode-electrify
 [daviddm-image]: https://david-dm.org/electrode-io/electrode-electrify.svg?theme=shields.io
 [daviddm-url]: https://david-dm.org/electrode-io/electrode-electrify
+[downloads-image]: https://img.shields.io/npm/dt/electrode-electrify.svg
+[downloads-url]: https://www.npmjs.com/package/electrode-electrify
