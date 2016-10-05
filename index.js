@@ -101,8 +101,11 @@ function json(bundles, callback) {
   otherModules.forEach(function(module) {
     var stylusRegex = /^.+\/node_modules\/stylus-relative-loader\/index(.+)/;
     var babelRegex = /^.+\/node_modules\/babel-loader\/index(.+)/;
+    var cssModulesRegex = /^.+\/node_modules\/postcss-loader\/index(.+)/;
 
-    if (stylusRegex.test(module.identifier) || babelRegex.test(module.identifier)) {
+    if (stylusRegex.test(module.identifier)
+      || babelRegex.test(module.identifier)
+      || cssModulesRegex.test(module.identifier)) {
       var structure = module.identifier.split("!")
       module.identifier = structure[structure.length - 1]
     }
@@ -140,7 +143,7 @@ function json(bundles, callback) {
 }
 
 function bundle(bundles, opts, callback) {
-  
+
   if (typeof opts === 'function') {
     callback = opts
     opts = {}
