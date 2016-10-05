@@ -86,6 +86,16 @@ function json(bundles, callback) {
     if (reactModules.indexOf(module) === -1) return true
   })
 
+  otherModules = otherModules.filter(function(module) {
+    var ignoreFiles = /^ignored \//;
+
+    if (ignoreFiles.test(module.identifier)) {
+      return false
+    } else {
+      return true
+    }
+  })
+
   var root = commondir(otherModules.map(pluck('identifier')))
 
   reactModules.forEach(function(module) {
@@ -102,12 +112,18 @@ function json(bundles, callback) {
     var stylusRegex = /^.+\/node_modules\/stylus-relative-loader\/index(.+)/;
     var babelRegex = /^.+\/node_modules\/babel-loader\/index(.+)/;
     var cssModulesRegex = /^.+\/node_modules\/postcss-loader\/index(.+)/;
+    var intlMessageRegex = /^.+\/node_modules\/intl-messageformat\/lib\/main.js|/;
 
     if (stylusRegex.test(module.identifier)
       || babelRegex.test(module.identifier)
       || cssModulesRegex.test(module.identifier)) {
       var structure = module.identifier.split("!")
       module.identifier = structure[structure.length - 1]
+    }
+
+    if (intlMessageRegex.test(module.identifier)) {
+      var intlStructure = module.identifier.split("|")
+      module.identifier = intlStructure[intlStructure.length - 1]
     }
 
     return module;
