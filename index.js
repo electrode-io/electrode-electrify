@@ -39,7 +39,28 @@ function createStream(opts) {
   return stream
 }
 
+function getBundleModules(bundles) {
+  bundles = Array.isArray(bundles)
+    ? bundles
+    : bundles ? [bundles] : []
+
+  if (bundles.length > 0) {
+    bundles = JSON.parse(bundles.toString())
+  }
+
+  return bundles && bundles.modules
+}
+
 function json(bundles, callback) {
+  // bundles length is 1 because its an array of buffer
+  // example: [ <Buffer 7b 0a 20 20 ... > ]
+  // length 1 is in case of CLI
+  if (bundles.length === 1) {
+    bundles = getBundleModules(bundles)
+  } else {
+    bundles = sampleStats.modules
+  }
+
   var modules = flatten(bundles).map(function(module) {
     if (typeof module === 'undefined') return callback(new Error(
       'Unable to compile one of the supplied bundles!'
@@ -65,6 +86,16 @@ function json(bundles, callback) {
     if (reactModules.indexOf(module) === -1) return true
   })
 
+  otherModules = otherModules.filter(function(module) {
+    var ignoreFiles = /^ignored \//;
+
+    if (ignoreFiles.test(module.identifier)) {
+      return false
+    } else {
+      return true
+    }
+  })
+
   var root = commondir(otherModules.map(pluck('identifier')))
 
   reactModules.forEach(function(module) {
@@ -80,10 +111,19 @@ function json(bundles, callback) {
   otherModules.forEach(function(module) {
     var stylusRegex = /^.+\/node_modules\/stylus-relative-loader\/index(.+)/;
     var babelRegex = /^.+\/node_modules\/babel-loader\/index(.+)/;
+    var cssModulesRegex = /^.+\/node_modules\/postcss-loader\/index(.+)/;
+    var intlMessageRegex = /^.+\/node_modules\/intl-messageformat\/lib\/main.js|/;
 
-    if (stylusRegex.test(module.identifier) || babelRegex.test(module.identifier)) {
+    if (stylusRegex.test(module.identifier)
+      || babelRegex.test(module.identifier)
+      || cssModulesRegex.test(module.identifier)) {
       var structure = module.identifier.split("!")
       module.identifier = structure[structure.length - 1]
+    }
+
+    if (intlMessageRegex.test(module.identifier)) {
+      var intlStructure = module.identifier.split("|")
+      module.identifier = intlStructure[intlStructure.length - 1]
     }
 
     return module;
@@ -103,9 +143,8 @@ function json(bundles, callback) {
 
   fileTree(ids, function(id, next) {
     var row = byid[id]
-
     next(null, {
-        size: row.source.length
+        size: (row && row.source.length) || 0
       , deps: 0
       , path: id
     })
@@ -120,11 +159,6 @@ function json(bundles, callback) {
 }
 
 function bundle(bundles, opts, callback) {
-  bundles = (bundles && bundles.modules) || sampleStats.modules
-
-  bundles = Array.isArray(bundles)
-    ? bundles
-    : bundles ? [bundles] : []
 
   if (typeof opts === 'function') {
     callback = opts
