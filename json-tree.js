@@ -38,12 +38,11 @@ module.exports = function jsonTree(json) {
       fileName = fileName.slice(2);
     }
 
-    rootSize += mod.size;
-
     getFile(mod, fileName, root);
   });
 
   root.maxDepth = maxDepth;
+  root.size = rootSize;
 
   return root;
 }
