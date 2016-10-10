@@ -9,7 +9,7 @@ import createPalette from './palette';
 const modeInitial = window.disc.mode || 'size'
 const modeFns = {
     count: () => 1
-  , size: (d) => d.size
+  , size: (d) => d.value || d.size
 }
 
 domready(function() {
@@ -51,7 +51,7 @@ domready(function() {
   // size stat below the title
   //
   const size = svg.append('text')
-    .text(pretty(root.size))
+    .text(pretty(root.value || root.size))
     .attr('x', 0)
     .attr('y', 15)
     .style('fill', 'white')
@@ -110,7 +110,7 @@ domready(function() {
       _select(root, (node) => node.name.match(re) !== null);
       if (found.length === 1) {
         title.text(found[0].name)
-        size.text(pretty(found[0].size))
+        size.text(pretty(found[0].value || found[0].size))
       } else {
         title.text("Multiple found")
         let completeSize = 0
@@ -208,11 +208,11 @@ domready(function() {
   groups.on('mouseover', (d) => {
     highlight(d)
     title.text(d.name)
-    size.text(pretty(d.size))
+    size.text(pretty(d.value || d.size))
   }).on('mouseout', (d) => {
     unhighlight(d)
     title.text(root.name)
-    size.text(pretty(root.size))
+    size.text(pretty(root.value || root.size))
   })
 
   highlight.tween = hoverTween(1)
