@@ -9,7 +9,7 @@ import createPalette from './palette';
 const modeInitial = window.disc.mode || 'size'
 const modeFns = {
     count: () => 1
-  , size: (d) => d.value || d.size
+  , size: (d) => d.size
 }
 
 domready(function() {
