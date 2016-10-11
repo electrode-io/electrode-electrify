@@ -9,7 +9,7 @@ for catching large and/or duplicate modules which might be either bloating up yo
 
 Checkout a live working [DEMO](http://bit.ly/electrode_electrify).
 
-![screencast](./img/screencast.gif)
+<!-- ![screencast](./img/screencast.gif) -->
 
 ## Installation ##
 
@@ -23,6 +23,7 @@ sudo npm install -g electrode-electrify
 ```
 
 ## Command-Line Interface ##
+***Note:*** *you'll need to build your project with the `fields: null` flag if you are using [webpack-stats-plugin], pass a fully generated webpack-stats-object for electrify to render the tree accurately.*
 
 ``` bash
 electrify [stats-bundle(s)...] {options}
@@ -39,7 +40,7 @@ available as the quickest means of checking out your bundle. As of `electrode-el
 the tool takes any [webpack-stats](https://github.com/webpack/docs/wiki/node.js-api#stats) object [example](https://github.com/webpack/analyse/blob/master/app/pages/upload/example.json) as input and spits out a
 standalone HTML page as output.
 
-You can easily chain the stats file into another command, or use the `--open`
+You can easily chain the stats file into another command, or use the `--open` or `-O`
 flag to open electrify in your browser automatically:
 
 
@@ -49,6 +50,28 @@ For example:
 electrify build/stats.json --open
 ```
 
+## API Integration ##
+***Note:*** *you'll need to build your project with the `fields: null` flag if you are using [webpack-stats-plugin], pass a fully generated webpack-stats-object for electrify to render the tree accurately.*
+
+### `electrify.bundle(stats, [opts], callback)` ###
+
+A callback-style interface for electrify: takes a single stats file or an array of `stats` (note: the
+file names and not the file contents), calling `callback(err, html)` with
+either an error or the resulting standalone HTML file as arguments.
+
+This currently mirrors how electrify is currently implemented, but the stream API is
+a little more convenient to work with.
+
+This method takes the following options:
+
+* `header`: HTML to include above the visualisation. Used internally to render
+  the "Fork me on GitHub" ribbon.
+* `footer`: HTML to include beneath the visualisation. Used internally for the
+  description on the demo page.
+* `mode`: the default file scale mode to display: one of either `"count"` or
+  `"size"`, defaulting to `"size"`.
+
+`bundle` api example: [electrify.bundle(stats, [opts], callback)](https://github.com/electrode-io/electrode-electrify/blob/2.x.x/lib/bundle-demo.js#L16)
 
 ## Palettes ##
 
@@ -103,3 +126,4 @@ Built with :heart: by [Team Electrode](https://github.com/orgs/electrode-io/peop
 [daviddm-url]: https://david-dm.org/electrode-io/electrode-electrify
 [downloads-image]: https://img.shields.io/npm/dt/electrode-electrify.svg
 [downloads-url]: https://www.npmjs.com/package/electrode-electrify
+[webpack-stats-plugin]: https://www.npmjs.com/package/webpack-stats-plugin
