@@ -40,7 +40,7 @@ domready(function() {
     .text(root.name)
     .attr('x', 0)
     .attr('y', -5)
-    .style('font-size', '12px')
+    .style('font-size', '18px')
     .style('fill', 'white')
     .style('font-weight', 500)
     .style('alignment-baseline', 'middle')
@@ -55,7 +55,7 @@ domready(function() {
     .attr('x', 0)
     .attr('y', 15)
     .style('fill', 'white')
-    .style('font-size', '10px')
+    .style('font-size', '14px')
     .style('alignment-baseline', 'middle')
     .style('text-anchor', 'middle')
 
