@@ -8,6 +8,14 @@ var http = require('http')
 var disc = require('../')
 var fs = require('fs')
 var bl = require('bl')
+var btoa = require('btoa')
+var marked = require('marked')
+
+var readme = fs.readFileSync(__dirname + '/../README.md', 'utf8')
+var button = fs.readFileSync(__dirname + '/../img/fork.png')
+
+button = btoa(button)
+button = 'data:image/png;base64,' + button
 
 var argv = optimist
   .wrap(70)
@@ -54,7 +62,15 @@ if (!files.length) {
 
 function handle(bundles) {
   disc.bundle(bundles, {
-    mode: argv.mode
+    mode: argv.mode,
+    footer: marked(readme),
+    header: [
+      '<a href="https://github.com/electrode-io/electrify">',
+      '<img style="position:absolute;top:-8px;left:-8px;border:0;"',
+      'src="' + button + '"',
+      'alt="Fork me on GitHub"',
+      '></a>'
+    ].join(' ')
   }, function(err, html) {
     if (err) throw err
     if (argv.output) return fs.writeFileSync(argv.output, html)
