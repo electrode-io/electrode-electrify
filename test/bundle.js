@@ -21,7 +21,7 @@ test('bundle callback', function(t) {
 })
 
 test('bundle cli', function(t) {
-  shell.exec('./bin/electrify /fixture/sample-stats.json', function(code, stdout, stderr) {
+  shell.exec('./bin/electrify test/fixture/sample-stats.json', function(code, stdout, stderr) {
     t.notOk(stderr, 'no error')
     t.ok(stdout, 'stdout index.html')
     jsdom.env(stdout, function(err, window) {
