@@ -69,7 +69,7 @@ function bundle(bundles, opts, callback) {
   data.mode = opts.mode || 'size'
 
   data = '<script type="text/javascript">'
-    + ';window.disc = ('
+    + ';window.electrify = ('
     + JSON.stringify(jsonTree(getStats(bundles)))
     + ');</script>'
 
