@@ -6,7 +6,7 @@
   "scripts": {
     "prepublish": "mkdir -p build && npm run browserify && npm run rework && npm run bundle-demo",
     "browserify": "browserify src/index.js -t [ babelify --presets [ es2015 react ] ] | uglifyjs -c 2> /dev/null > build/bundle.js",
-    "bundle-demo": "node lib/bundle-demo > index.html",
+    "bundle-demo": "node lib/bundle-demo /stats/electrode-app-stats.json > index.html",
     "build-fixture": "browserify --full-paths ./test/fixture/index.js > ./test/fixture/bundle.js && browserify ./test/fixture/index.js > ./test/fixture/bundle-no-full.js",
     "demo": "npm run prepublish && opener index.html",
     "rework": "node lib/bundle-css > build/style.css",

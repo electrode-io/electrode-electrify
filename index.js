@@ -7,8 +7,6 @@ var bl = require('bl')
 var versions = require('./lib/versions')
 var jsonTree = require('./json-tree')
 
-var sampleStats = require('./lib/stats/electrode-app-stats.json')
-
 module.exports = createStream
 createStream.bundle = bundle
 
@@ -50,13 +48,11 @@ function getStats(bundles) {
   if (Array.isArray(bundles)) {
     return parseBundle(bundles)
   } else {
-    return sampleStats
+    throw new Error("**** Pass the stats.json as per instructions electrify -h ****")
   }
 }
 
 function bundle(bundles, opts, callback) {
-  var statsData = getStats(bundles)
-
   if (typeof opts === 'function') {
     callback = opts
     opts = {}
@@ -74,7 +70,7 @@ function bundle(bundles, opts, callback) {
 
   data = '<script type="text/javascript">'
     + ';window.disc = ('
-    + JSON.stringify(jsonTree(statsData))
+    + JSON.stringify(jsonTree(getStats(bundles)))
     + ');</script>'
 
   var script = '<script type="text/javascript">'
