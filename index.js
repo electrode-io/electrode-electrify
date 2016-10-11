@@ -32,7 +32,30 @@ function createStream(opts) {
   return stream
 }
 
+function parseBundle(bundles) {
+  if (!bundles) {
+    return null;
+  }
+
+  bundles = bundles && bundles[0]
+
+  if (bundles) {
+    bundles = JSON.parse(bundles.toString())
+  }
+
+  return bundles;
+}
+
+function getStats(bundles) {
+  if (Array.isArray(bundles)) {
+    return parseBundle(bundles)
+  } else {
+    return sampleStats
+  }
+}
+
 function bundle(bundles, opts, callback) {
+  var statsData = getStats(bundles)
 
   if (typeof opts === 'function') {
     callback = opts
@@ -51,7 +74,7 @@ function bundle(bundles, opts, callback) {
 
   data = '<script type="text/javascript">'
     + ';window.disc = ('
-    + JSON.stringify(jsonTree(sampleStats))
+    + JSON.stringify(jsonTree(statsData))
     + ');</script>'
 
   var script = '<script type="text/javascript">'
