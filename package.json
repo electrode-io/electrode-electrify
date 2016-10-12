@@ -62,6 +62,9 @@
     "elctrode-io",
     "elctrode.io",
     "analyze",
+    "webpack visualize",
+    "webpack analyze",
+    "webpack chart",
     "size",
     "structure",
     "visualize"
