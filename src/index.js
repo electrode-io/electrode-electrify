@@ -48,14 +48,28 @@ domready(function() {
 
   //
   // Likewise, this is the file
+  // percentage size stat below the title
+  //
+  const percentageSize = svg.append('text')
+    .text(pretty(root.value || root.size))
+    .attr('x', 0)
+    .attr('y', 20)
+    .style('fill', 'white')
+    .style('font-size', '16px')
+    .style('font-weight', 300)
+    .style('alignment-baseline', 'middle')
+    .style('text-anchor', 'middle')
+
+  //
+  // Likewise, this is the file
   // size stat below the title
   //
   const size = svg.append('text')
-    .text(pretty(root.value || root.size))
+    .text('(' + pretty(root.value || root.size) + ')')
     .attr('x', 0)
-    .attr('y', 15)
+    .attr('y', 40)
     .style('fill', 'white')
-    .style('font-size', '14px')
+    .style('font-size', '16px')
     .style('alignment-baseline', 'middle')
     .style('text-anchor', 'middle')
 
@@ -208,7 +222,11 @@ domready(function() {
   groups.on('mouseover', (d) => {
     highlight(d)
     title.text(d.name)
-    size.text(pretty(d.value || d.size))
+
+    let sizeInPercentage = (d.value/root.value*100).toFixed(2);
+    percentageSize.text(sizeInPercentage + " %")
+
+    size.text('(' + pretty(d.value || d.size) + ')')
   }).on('mouseout', (d) => {
     unhighlight(d)
     title.text(root.name)
