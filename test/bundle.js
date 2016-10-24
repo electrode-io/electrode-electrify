@@ -9,14 +9,18 @@ test('bundle callback', function(t) {
     t.notOk(err, 'no error')
     t.ok(res, 'index.html response okay')
 
-    jsdom.env(res, function(err, window) {
-      var div = window.document.createElement('div');
-      div.innerHTML = res;
+    return new Promise(function(resolve, reject) {
+      return jsdom.env(res, function(err, window) {
+        if (err) reject(err);
 
-      t.equal(div.getElementsByClassName("chart").length, 1, 'svg chart div')
+        var div = window.document.createElement('div');
+        div.innerHTML = res;
+
+        t.equal(div.getElementsByClassName("chart").length, 1, 'svg chart div')
+
+        t.end()
+      })
     })
-
-    t.end()
   })
 })
 
@@ -24,13 +28,18 @@ test('bundle cli', function(t) {
   shell.exec('./bin/electrify test/fixture/sample-stats.json', function(code, stdout, stderr) {
     t.notOk(stderr, 'no error')
     t.ok(stdout, 'stdout index.html')
-    jsdom.env(stdout, function(err, window) {
-      var div = window.document.createElement('div');
-      div.innerHTML = stdout;
 
-      t.equal(div.getElementsByClassName("chart").length, 1, 'svg chart div')
+    return new Promise(function(resolve, reject) {
+      return jsdom.env(stdout, function(err, window) {
+        if (err) reject(err);
+
+        var div = window.document.createElement('div');
+        div.innerHTML = stdout;
+
+        t.equal(div.getElementsByClassName("chart").length, 1, 'svg chart div')
+
+        t.end()
+      })
     })
   })
-
-  t.end()
 })
