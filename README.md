@@ -9,7 +9,7 @@ for catching large and/or duplicate modules which might be either bloating up yo
 
 Checkout a live working [DEMO](http://bit.ly/electrode_electrify).
 
-<!-- ![screencast](./img/screencast.gif) -->
+![screencast](./img/screencast.gif)
 
 ## Installation ##
 
