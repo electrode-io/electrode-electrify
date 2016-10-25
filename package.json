@@ -1,6 +1,6 @@
 {
   "name": "electrode-electrify",
-  "version": "2.1.1-0",
+  "version": "3.0.0",
   "description": "A tool based on D3.js for analyzing/visualizing webpack bundle/stats or electrode.io project",
   "main": "index.js",
   "scripts": {
