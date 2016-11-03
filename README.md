@@ -1,4 +1,4 @@
-# electrify [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![NPM Downloads][downloads-image]][downloads-url] [![Dependency Status][daviddm-image]][daviddm-url]
+# electrify [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![NPM Downloads][downloads-image]][downloads-url]
 
 
 ## What is Electrify? ##
