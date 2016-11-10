@@ -6,19 +6,14 @@ import { arc, initArc, bounceHigh, arcTween, hoverTween, rotateTween } from './u
 import createModes, { highlightMode } from './mode';
 import createPalette from './palette';
 
-const modeInitial = window.electrify.mode || 'size'
-const modeFns = {
-    count: () => 1
-  , size: (d) => d.size
-}
-
-domready(function() {
-  const root = window.electrify
-    , width = window.innerWidth
-    , height = Math.max(window.innerHeight - 100, 100)
-    , radius = Math.min(width, height) * 0.45
-    , deg = 120
-
+const createModuleVisualizer = function(root, height, width, radius, deg){
+  
+  const modeInitial = window.electrify.mode || 'size'
+  const modeFns = {
+      count: () => 1
+    , size: (d) => d.size
+  }
+  
   const svg = d3.select('.chart').append('svg')
     .attr('width', width)
     .attr('height', height)
@@ -281,4 +276,15 @@ domready(function() {
       .duration(1500)
       .attrTween('d', arcTween)
   }
+}
+
+domready(() => {  
+  const root = window.electrify,
+    height = Math.max(window.innerHeight - 100, 100),
+    width = window.innerWidth,
+    radius = Math.min(width, height) * 0.45,
+    deg = 120
+  
+  createModuleVisualizer(root, height, width, radius, deg);
+  createAssetsVisualizer(root, height, width, radius, deg);
 })
