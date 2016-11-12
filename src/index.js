@@ -5,9 +5,10 @@ import d3 from 'd3';
 import { arc, initArc, bounceHigh, arcTween, hoverTween, rotateTween } from './utils';
 import createModes, { highlightMode } from './mode';
 import createPalette from './palette';
+import createAssetsVisualizer from './assetVisualization/assetVisualization'
 
 const createModuleVisualizer = function(root, height, width, radius, deg){
-  
+
   const modeInitial = window.electrify.mode || 'size'
   const modeFns = {
       count: () => 1
@@ -15,8 +16,8 @@ const createModuleVisualizer = function(root, height, width, radius, deg){
   }
   
   const svg = d3.select('.chart').append('svg')
-    .attr('width', width)
-    .attr('height', height)
+    .attr("preserveAspectRatio", "xMinYMin meet") 
+    .attr("viewBox", `0 0 ${width} ${height}`)
     .append('g')
     .attr('transform', `translate(${width / 2},${height * .52})`)
 
@@ -280,11 +281,10 @@ const createModuleVisualizer = function(root, height, width, radius, deg){
 
 domready(() => {  
   const root = window.electrify,
-    height = Math.max(window.innerHeight - 100, 100),
-    width = window.innerWidth,
+    height = 500,
+    width = 850,
     radius = Math.min(width, height) * 0.45,
     deg = 120
-  
   createModuleVisualizer(root, height, width, radius, deg);
   createAssetsVisualizer(root, height, width, radius, deg);
 })
