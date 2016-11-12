@@ -1,3 +1,9 @@
+* {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
 html, body {
   font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 100;
@@ -14,12 +20,37 @@ body {
   width: 100%;
 }
 
+.container {
+  position: relative;
+  margin: 0 2%;
+}
+
 .content {
   animation: content 4s;
 }
 
 .content img {
   display: none;
+}
+
+.leftColumn {
+  float: left;
+  width: 100%;
+  display: inline-block;
+}
+.rightColumn {
+  display: inline-block;
+  float: left;
+  width: 100%;
+}
+
+@media (min-width: 900px) {
+  .leftColumn {
+    width: 65%;
+  }
+  .rightColumn {
+    width: 35%;
+  }
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -31,7 +62,7 @@ h1 {
   font-size: 2.82em;
   text-align: center;
   margin: 0 auto;
-  width: 600px;
+  width: 80%;
   padding-bottom: 0.5em;
   margin-bottom: 1em;
   letter-spacing: 0.075em;
@@ -49,11 +80,13 @@ h2 {
   padding-top: 1em;
 }
 
-.chart {
+.chart,
+.assets {
   margin: 0 auto;
 }
 
 .chart,
+.assets,
 .modes,
 .palette-wrap {
   -webkit-user-select: none;
