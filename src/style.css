@@ -170,12 +170,13 @@ h2 {
 
 .scheme-icon:hover .scheme-text {
   opacity: 1;
-  right: 64px;
+  /*right: 64px;*/
 }
 
 .scheme-text {
   cursor: pointer;
   position: absolute;
+  left:-160px;
   width: 150px;
   height: 48px;
   line-height: 48px;
@@ -201,10 +202,8 @@ pre, code {
 
 .palette-wrap {
   top: 0px;
-  /*position: absolute;*/
   position: relative;
-  /*right: 16px;*/
-  margin-left: 88%;
+  margin-left: 89%;
 }
 
 .palette {
