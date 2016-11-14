@@ -1,7 +1,7 @@
 language: node_js
 
 node_js:
-  - '4.2.6'
+  - v6
 
 brances:
   only:
