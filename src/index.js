@@ -327,6 +327,22 @@ domready(() => {
     .duration(2000)
     .attr('width', (d) => d.size)
 
+  bars
+    .on('mouseover', function() { //do not use arrow fn
+      d3.select(this)
+        .transition()
+        .ease('back-out', 5)
+        .duration(500)
+        .attr('height', barHeight*0.8)
+      })
+    .on('mouseleave', function() { //do not use arrow fn
+      d3.select(this)
+        .transition()
+        .ease('back-out', 5)
+        .duration(500)
+        .attr('height', barHeight*0.7)
+      })
+
   asset.append("text")
     .attr("x", "50")
     .attr("y", (d,i) => i*barHeight*2+barHeight*1.35)
@@ -334,6 +350,28 @@ domready(() => {
     .text((d) => formatSize(d.size))
     .style("font-size", "2.6em")
     .style('fill', 'white')
+    .on('mouseover', function(d, i) { //do not use arrow fn
+      bars.each(function(e, j){
+        if( j == i){
+          d3.select(this)  
+            .transition()
+            .ease('back-out', 5)
+            .duration(500)
+            .attr('height', barHeight*0.8)
+        }
+      })
+    })
+    .on('mouseleave', function(d, i) { //do not use arrow fn
+      bars.each(function(e, j){
+        if (j == i){
+          d3.select(this)  
+            .transition()
+            .ease('back-out', 5)
+            .duration(500)
+            .attr('height', barHeight*0.7)
+        }
+      })
+    })
 
   function changeAssetScheme(n) {
     const mainColor = schemes[n].main[0];
