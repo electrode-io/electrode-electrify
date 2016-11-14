@@ -329,12 +329,12 @@ const createModuleVisualizer = function(root, height, width, radius, deg){
     .style('fill', 'white')
 
   function changeAssetScheme(n) {
-    const mainColor = schemes[n].main[5];
+    const mainColor = schemes[n].main[0];
     if(bars) { 
       bars.transition()
-      .duration(600)
+      .duration(1000)
       .ease(bounceHigh, 1000)
-      .delay(() => Math.random()*500)
+      .delay(() => Math.random()*800)
       .style("fill", mainColor)
     }
     return mainColor;
