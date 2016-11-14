@@ -9,7 +9,13 @@ import createPalette from './palette';
 import map from 'lodash/map';
 import formatSize from "../lib/format-size";
 
-const createModuleVisualizer = function(root, height, width, radius, deg){
+domready(() => {  
+  const root = window.electrify,
+    height = 500,
+    width = 850,
+    radius = Math.min(width, height) * 0.45,
+    deg = 120
+
   const modeInitial = window.electrify.mode || 'size'
   const modeFns = {
       count: () => 1
@@ -280,13 +286,13 @@ const createModuleVisualizer = function(root, height, width, radius, deg){
 
 ///////////////////////////  ASSET VISUALIZATION  //////////////////////////////////////////
 
-  const barHeight = 60;
+  const barHeight = 70;
   const assetData = window.electrify.assets;
-  const maxFileSize = d3.max(map(assetData, (d)=>d.size));
-  const minFileSize = d3.min(map(assetData, (d)=>d.size));
+  const maxAssetFileSize = d3.max(map(assetData, (d)=>d.size));
+  const minAssetFileSize = d3.min(map(assetData, (d)=>d.size));
   const logScale = d3.scale
     .log()
-    .domain([minFileSize, maxFileSize])
+    .domain([minAssetFileSize, maxAssetFileSize])
     .range([0, width])
   for(let i = 0; i < assetData.length; i++) {
     assetData[i].size = logScale(assetData[i].size);
@@ -296,21 +302,22 @@ const createModuleVisualizer = function(root, height, width, radius, deg){
   chart.attr("preserveAspectRatio", "xMinYMin meet") 
     .attr("viewBox", `0 0 ${width} ${barHeight*assetData.length*2}`)
     .append("g")
+    .classed("asset")
 
-  const asset = chart.selectAll("g")
+  const asset = chart.selectAll("g.asset")
     .data(assetData)
     .enter()
     .append("g")
 
   asset.append("text")
-    .attr("y", (d,i) => i === 0 ? barHeight*2 : i*barHeight*2)
+    .attr("y", (d,i) => i*barHeight*2)
     .attr("dy", "1em")
     .text((d) => d.name)
     .style("font-size", "2em")
     .style('fill', 'white')
 
   let bars = asset.append('rect')
-    .attr("transform", (d,i) => `translate(30,${i === 0 ? barHeight*2+barHeight : i*barHeight*2+barHeight})`)
+    .attr("transform", (d,i) => `translate(30,${i*barHeight*2+barHeight})`)
     .attr('height', barHeight*0.7)
     .attr('width', (d => d.size))
 
@@ -322,7 +329,7 @@ const createModuleVisualizer = function(root, height, width, radius, deg){
 
   asset.append("text")
     .attr("x", "50")
-    .attr("y", (d,i) => i === 0 ? barHeight*2+barHeight*1.35 : i*barHeight*2+barHeight*1.35)
+    .attr("y", (d,i) => i*barHeight*2+barHeight*1.35)
     .attr("dy", ".35em")
     .text((d) => formatSize(d.size))
     .style("font-size", "2.6em")
@@ -339,14 +346,4 @@ const createModuleVisualizer = function(root, height, width, radius, deg){
     }
     return mainColor;
   }
-}
-
-
-domready(() => {  
-  const root = window.electrify,
-    height = 500,
-    width = 850,
-    radius = Math.min(width, height) * 0.45,
-    deg = 120
-  createModuleVisualizer(root, height, width, radius, deg);
 })
