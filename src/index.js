@@ -6,7 +6,6 @@ import { arc, initArc, bounceHigh, arcTween, hoverTween, rotateTween } from './u
 import createModes, { highlightMode } from './mode';
 import createPalette from './palette';
 import map from 'lodash/map';
-import formatSize from "../lib/format-size";
 
 domready(() => {  
   const root = window.electrify,
@@ -346,7 +345,7 @@ domready(() => {
     .attr("x", "50")
     .attr("y", (d,i) => i*barHeight*2+barHeight*1.35)
     .attr("dy", ".35em")
-    .text((d) => formatSize(d.size))
+    .text((d) => pretty(d.size))
     .style("font-size", "2.6em")
     .style('fill', 'white')
     .on('mouseover', function(d, i) { //do not use arrow fn
