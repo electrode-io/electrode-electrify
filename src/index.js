@@ -5,7 +5,6 @@ import d3 from 'd3';
 import { arc, initArc, bounceHigh, arcTween, hoverTween, rotateTween } from './utils';
 import createModes, { highlightMode } from './mode';
 import createPalette from './palette';
-// import createAssetsVisualizer from './assetVisualization/assetVisualization'
 import map from 'lodash/map';
 import formatSize from "../lib/format-size";
 
