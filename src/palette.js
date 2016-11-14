@@ -26,7 +26,6 @@ export default (schemes, useScheme) => {
   }
 
   const paletteDiv = d3.select('.palette-wrap')
-    .style('top', '185px')
     .selectAll('.palette')
     .data(schemes)
     .enter()

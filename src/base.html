@@ -10,22 +10,25 @@
   <body>
     <!-- @@header -->
     <div class="container">
-      <input type="text" id="search" placeholder="Search File .." class="search-box" style="opacity: 0">
-      <div class="modes">
-        <ul class="scale-list">
-        </ul>
-      </div>
       <div class="rightColumn">
         <h1>Assets</h1>
-        <ul class="dataView">
-        </ul>
+        <div class="selectors">
+          <ul class="dataView"/>
+        </div>
         <div class="assets"></div>
       </div>
       <div class='leftColumn'>
         <h1>Modules</h1>
+        <div class="selectors">
+          <input type="text" id="search" placeholder="Search File .." class="search-box" style="opacity: 0">
+          <div class="modes">
+            <ul class="scale-list">
+            </ul>
+          </div>
+          <div class="palette-wrap"></div>
+        </div>
         <div class="chart"></div>
       </div>
-      <div class="palette-wrap"></div>
       <article class="content">
         <div class="markdown"><!-- @@markdown --></div>
       </article>

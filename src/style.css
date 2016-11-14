@@ -113,14 +113,13 @@ h2 {
   font-weight: 200;
 }
 
-.modes {
-  position: absolute;
-  right: 16px;
-  top: 65px;
+.selectors {
+  height: 0px;
 }
 
 .scale-list {
   list-style-type: none;
+  width: 94%;
   margin: 0;
   padding: 0;
   overflow:hidden;
@@ -201,8 +200,11 @@ pre, code {
 }
 
 .palette-wrap {
-  position: absolute;
-  right: 16px;
+  top: 0px;
+  /*position: absolute;*/
+  position: relative;
+  /*right: 16px;*/
+  margin-left: 88%;
 }
 
 .palette {
@@ -215,10 +217,11 @@ pre, code {
 }
 
 .search-box {
-  top: 20px;
-  margin-left: 82%;
+  top: -10px;
+  margin-left: 79%;
   width: 15%;
-  position: absolute;
+  /*position: absolute;*/
+  position: relative;
   font-size: 1rem;
   line-height: 1.25;
   padding: 0.5rem 0.75rem;

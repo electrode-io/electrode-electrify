@@ -286,5 +286,5 @@ domready(() => {
     radius = Math.min(width, height) * 0.45,
     deg = 120
   createModuleVisualizer(root, height, width, radius, deg);
-  createAssetsVisualizer(root, height, width, radius, deg);
+  createAssetsVisualizer(root, height, width);
 })
