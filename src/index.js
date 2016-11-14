@@ -5,10 +5,11 @@ import d3 from 'd3';
 import { arc, initArc, bounceHigh, arcTween, hoverTween, rotateTween } from './utils';
 import createModes, { highlightMode } from './mode';
 import createPalette from './palette';
-import createAssetsVisualizer from './assetVisualization/assetVisualization'
+// import createAssetsVisualizer from './assetVisualization/assetVisualization'
+import map from 'lodash/map';
+import formatSize from "../lib/format-size";
 
 const createModuleVisualizer = function(root, height, width, radius, deg){
-
   const modeInitial = window.electrify.mode || 'size'
   const modeFns = {
       count: () => 1
@@ -21,7 +22,7 @@ const createModuleVisualizer = function(root, height, width, radius, deg){
     .append('g')
     .attr('transform', `translate(${width / 2},${height * .52})`)
 
-  createPalette(schemes, useScheme);
+  createPalette(schemes, useScheme, changeAssetScheme);
 
   const partition = d3.layout.partition()
     .sort(null)
@@ -137,7 +138,6 @@ const createModuleVisualizer = function(root, height, width, radius, deg){
       .transition()
       .duration(200)
       .style('opacity', d => {
-        console.log(d.name, d.enabled);
         return d.enabled ? 1.0 : 0.2
       })
   })
@@ -277,7 +277,70 @@ const createModuleVisualizer = function(root, height, width, radius, deg){
       .duration(1500)
       .attrTween('d', arcTween)
   }
+
+///////////////////////////  ASSET VISUALIZATION  //////////////////////////////////////////
+
+  const barHeight = 60;
+  const assetData = window.electrify.assets;
+  const maxFileSize = d3.max(map(assetData, (d)=>d.size));
+  const minFileSize = d3.min(map(assetData, (d)=>d.size));
+  const logScale = d3.scale
+    .log()
+    .domain([minFileSize, maxFileSize])
+    .range([0, width])
+  for(let i = 0; i < assetData.length; i++) {
+    assetData[i].size = logScale(assetData[i].size);
+  }
+
+  const chart = d3.select('.assets').append("svg");
+  chart.attr("preserveAspectRatio", "xMinYMin meet") 
+    .attr("viewBox", `0 0 ${width} ${barHeight*assetData.length*2}`)
+    .append("g")
+
+  const asset = chart.selectAll("g")
+    .data(assetData)
+    .enter()
+    .append("g")
+
+  asset.append("text")
+    .attr("y", (d,i) => i === 0 ? barHeight*2 : i*barHeight*2)
+    .attr("dy", "1em")
+    .text((d) => d.name)
+    .style("font-size", "2em")
+    .style('fill', 'white')
+
+  let bars = asset.append('rect')
+    .attr("transform", (d,i) => `translate(30,${i === 0 ? barHeight*2+barHeight : i*barHeight*2+barHeight})`)
+    .attr('height', barHeight*0.7)
+    .attr('width', (d => d.size))
+
+  bars.style('fill', changeAssetScheme(0))
+    .attr('width', '0')
+    .transition()
+    .duration(2000)
+    .attr('width', (d) => d.size)
+
+  asset.append("text")
+    .attr("x", "50")
+    .attr("y", (d,i) => i === 0 ? barHeight*2+barHeight*1.35 : i*barHeight*2+barHeight*1.35)
+    .attr("dy", ".35em")
+    .text((d) => formatSize(d.size))
+    .style("font-size", "2.6em")
+    .style('fill', 'white')
+
+  function changeAssetScheme(n) {
+    const mainColor = schemes[n].main[5];
+    if(bars) { 
+      bars.transition()
+      .duration(600)
+      .ease(bounceHigh, 1000)
+      .delay(() => Math.random()*500)
+      .style("fill", mainColor)
+    }
+    return mainColor;
+  }
 }
+
 
 domready(() => {  
   const root = window.electrify,
@@ -286,5 +349,4 @@ domready(() => {
     radius = Math.min(width, height) * 0.45,
     deg = 120
   createModuleVisualizer(root, height, width, radius, deg);
-  createAssetsVisualizer(root, height, width);
 })
