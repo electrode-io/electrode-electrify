@@ -8,7 +8,8 @@ import createPalette from './palette';
 import map from 'lodash/map';
 import each from 'lodash/each';
 
-domready(() => {  
+domready(() => { 
+if(!window.electrify) return null
   const root = window.electrify,
     height = 500,
     width = 850,
