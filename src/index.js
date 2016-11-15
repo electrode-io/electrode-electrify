@@ -285,7 +285,7 @@ domready(() => {
 ///////////////////////////  ASSET VISUALIZATION  //////////////////////////////////////////
 
   const barHeight = 70;
-  const assetData = window.electrify.assets;
+  const assetData = window.electrify.assets.sort((x,y) => d3.ascending(y.size, x.size));
   const maxAssetFileSize = d3.max(map(assetData, (d)=>d.size));
   const minAssetFileSize = d3.min(map(assetData, (d)=>d.size));
   const logScale = d3.scale
