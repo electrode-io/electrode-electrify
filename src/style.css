@@ -24,6 +24,21 @@ body {
   position: relative;
   margin: 0 2%;
 }
+.statsDropBox {
+    height: 500px;
+    border-radius: 5px;
+    padding: 5px;
+    width: 40%;
+    border: 3px dashed rgb(106, 74, 60);
+    background-color: rgba(255, 238, 169, 0.75);
+    margin: 50px auto auto;
+}
+
+.hiddenFileInput {
+  width: 0px;
+  height: 0px;
+  visibility: hidden;
+}
 
 .content {
   animation: content 4s;
@@ -221,3 +236,51 @@ pre, code {
   border: 1px solid rgba(0,0,0,.15);
   border-radius: .25rem;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.box__dragndrop,
+.box__uploading,
+.box__success,
+.box__error {
+  display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
