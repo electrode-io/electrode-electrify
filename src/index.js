@@ -6,6 +6,7 @@ import { arc, initArc, bounceHigh, arcTween, hoverTween, rotateTween } from './u
 import createModes, { highlightMode } from './mode';
 import createPalette from './palette';
 import map from 'lodash/map';
+import each from 'lodash/each';
 
 domready(() => {  
   const root = window.electrify,
@@ -292,9 +293,8 @@ domready(() => {
     .log()
     .domain([minAssetFileSize, maxAssetFileSize])
     .range([0, width])
-  for(let i = 0; i < assetData.length; i++) {
-    assetData[i].size = logScale(assetData[i].size);
-  }
+
+  each(assetData, (asset)=> asset.logScaledSize = logScale(asset.size))
 
   const chart = d3.select('.assets').append("svg");
   chart.attr("preserveAspectRatio", "xMinYMin meet") 
@@ -323,7 +323,7 @@ domready(() => {
     .attr('width', '0')
     .transition()
     .duration(2000)
-    .attr('width', (d) => d.size)
+    .attr('width', (d) => d.logScaledSize)
 
   bars
     .on('mouseover', function() { //do not use arrow fn
