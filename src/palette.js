@@ -1,6 +1,6 @@
 import d3 from 'd3';
 
-export default (schemes, useScheme) => {
+export default (schemes, useScheme, changeAssetScheme) => {
   function _select(n) {
     palettes.each(function(d, i) {
       d3.select(this.parentNode)
@@ -22,11 +22,11 @@ export default (schemes, useScheme) => {
   }
   function _useScheme(n) {
     _select(n);
-    useScheme(n)
+    useScheme(n);
+    changeAssetScheme(n);
   }
 
   const paletteDiv = d3.select('.palette-wrap')
-    .style('top', '185px')
     .selectAll('.palette')
     .data(schemes)
     .enter()

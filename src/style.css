@@ -1,3 +1,9 @@
+* {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
 html, body {
   font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 100;
@@ -14,12 +20,37 @@ body {
   width: 100%;
 }
 
+.container {
+  position: relative;
+  margin: 0 2%;
+}
+
 .content {
   animation: content 4s;
 }
 
 .content img {
   display: none;
+}
+
+.leftColumn {
+  float: left;
+  width: 100%;
+  display: inline-block;
+}
+.rightColumn {
+  display: inline-block;
+  float: left;
+  width: 100%;
+}
+
+@media (min-width: 900px) {
+  .leftColumn {
+    width: 65%;
+  }
+  .rightColumn {
+    width: 35%;
+  }
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -31,7 +62,7 @@ h1 {
   font-size: 2.82em;
   text-align: center;
   margin: 0 auto;
-  width: 600px;
+  width: 80%;
   padding-bottom: 0.5em;
   margin-bottom: 1em;
   letter-spacing: 0.075em;
@@ -49,11 +80,13 @@ h2 {
   padding-top: 1em;
 }
 
-.chart {
+.chart,
+.assets {
   margin: 0 auto;
 }
 
 .chart,
+.assets,
 .modes,
 .palette-wrap {
   -webkit-user-select: none;
@@ -80,17 +113,13 @@ h2 {
   font-weight: 200;
 }
 
-.modes {
-  position: absolute;
-  right: 16px;
-  top: 65px;
+.selectors {
+  height: 0px;
 }
 
 .scale-list {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow:hidden;
+  list-style: none;
+  margin-left: 82%;
 }
 .scale-icon:hover {
   opacity: 1;
@@ -103,22 +132,19 @@ h2 {
   font-size: 1.2em;
   text-align: right;
   opacity: 0.5;
-  padding-right:64px;
   transition: opacity 0.2s;
-  position:relative;
 }
 .scale-icon svg {
-  position:absolute;
-  top:0;
-  right:0;
+  position: absolute;
+  right: 4%;
 }
 .scale-icon:hover span {
   opacity: 1;
-  left: 0;
+  left: -135px;
 }
 .scale-icon span {
   position: relative;
-  left: 100px;
+  left: -80px; 
   opacity: 0;
   transition: opacity 0.2s, left 0.2s;
 }
@@ -138,12 +164,12 @@ h2 {
 
 .scheme-icon:hover .scheme-text {
   opacity: 1;
-  right: 64px;
 }
 
 .scheme-text {
   cursor: pointer;
   position: absolute;
+  left:-160px;
   width: 150px;
   height: 48px;
   line-height: 48px;
@@ -168,8 +194,9 @@ pre, code {
 }
 
 .palette-wrap {
-  position: absolute;
-  right: 16px;
+  top: 0px;
+  position: relative;
+  margin-left: 89%;
 }
 
 .palette {
@@ -182,10 +209,10 @@ pre, code {
 }
 
 .search-box {
-  top: 20px;
-  margin-left: 82%;
+  top: -10px;
+  margin-left: 79%;
   width: 15%;
-  position: absolute;
+  position: relative;
   font-size: 1rem;
   line-height: 1.25;
   padding: 0.5rem 0.75rem;

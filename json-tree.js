@@ -1,9 +1,11 @@
 module.exports = function jsonTree(json) {
+  var assets = json.assets
   var modules = json.modules;
   var maxDepth = 1;
   var rootSize = 0;
 
   var root = {
+    assets,
     children: [],
     name: 'root'
   };
