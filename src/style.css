@@ -120,8 +120,6 @@ h2 {
 .scale-list {
   list-style: none;
   margin-left: 82%;
-  /*padding: 0;*/
-  /*overflow:hidden;*/
 }
 .scale-icon:hover {
   opacity: 1;
@@ -134,13 +132,10 @@ h2 {
   font-size: 1.2em;
   text-align: right;
   opacity: 0.5;
-  /*padding-right:64px;*/
   transition: opacity 0.2s;
-  /*position:relative;*/
 }
 .scale-icon svg {
   position: absolute;
-  /*top:0;*/
   right: 4%;
 }
 .scale-icon:hover span {
@@ -169,7 +164,6 @@ h2 {
 
 .scheme-icon:hover .scheme-text {
   opacity: 1;
-  /*right: 64px;*/
 }
 
 .scheme-text {
@@ -218,7 +212,6 @@ pre, code {
   top: -10px;
   margin-left: 79%;
   width: 15%;
-  /*position: absolute;*/
   position: relative;
   font-size: 1rem;
   line-height: 1.25;
