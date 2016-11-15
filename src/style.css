@@ -118,11 +118,10 @@ h2 {
 }
 
 .scale-list {
-  list-style-type: none;
-  width: 94%;
-  margin: 0;
-  padding: 0;
-  overflow:hidden;
+  list-style: none;
+  margin-left: 82%;
+  /*padding: 0;*/
+  /*overflow:hidden;*/
 }
 .scale-icon:hover {
   opacity: 1;
@@ -135,22 +134,22 @@ h2 {
   font-size: 1.2em;
   text-align: right;
   opacity: 0.5;
-  padding-right:64px;
+  /*padding-right:64px;*/
   transition: opacity 0.2s;
-  position:relative;
+  /*position:relative;*/
 }
 .scale-icon svg {
-  position:absolute;
-  top:0;
-  right:0;
+  position: absolute;
+  /*top:0;*/
+  right: 4%;
 }
 .scale-icon:hover span {
   opacity: 1;
-  left: 0;
+  left: -135px;
 }
 .scale-icon span {
   position: relative;
-  left: 100px;
+  left: -80px; 
   opacity: 0;
   transition: opacity 0.2s, left 0.2s;
 }
