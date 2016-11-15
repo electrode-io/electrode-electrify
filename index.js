@@ -73,7 +73,6 @@ function bundle(bundles, opts, callback) {
       `<div 
         id="statsDropBox"
         class="statsDropBox"
-        onclick=document.getElementById('fileInput').click();
       >
         <input 
           type="file"
@@ -81,20 +80,9 @@ function bundle(bundles, opts, callback) {
           class="hiddenFileInput"
         />
         <h2>Drop a JSON file or click to upload</h2>
-      </div>`
-
-    if(bundles.length){
-      data = '<script type="text/javascript">'
-      + ';window.electrify = ('
-      + JSON.stringify(jsonTree(getStats(bundles)))
-      + ');</script>'
-      
-      statsContainer = 
-        `<div class="rightColumn">
+      </div>
+      <div class="rightColumn">
           <h1>Assets</h1>
-          <div class="selectors">
-            <ul class="dataView"/>
-          </div>
           <div class="assets"></div>
         </div>
         <div class="leftColumn">
@@ -113,10 +101,16 @@ function bundle(bundles, opts, callback) {
             <div class="palette-wrap"></div>
           </div>
           <div class="chart"></div>
-        </div>`
+        </div>
+      `
+
+    if(bundles.length){
+      data = '<script type="text/javascript">'
+      + ';window.electrify = ('
+      + JSON.stringify(jsonTree(getStats(bundles)))
+      + ');</script>'
     }
     
-  
   var scripts = '<script type="text/javascript">'
     + bundled().replace(/\/script/gi, '\\/script')
     + '</script>'
