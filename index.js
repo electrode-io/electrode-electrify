@@ -34,7 +34,7 @@ function parseBundle(bundles) {
   if (!bundles) {
     return null;
   }
-  
+
   bundles = bundles && bundles[0]
 
   if (bundles) {
@@ -68,7 +68,20 @@ function bundle(bundles, opts, callback) {
 
   data.mode = opts.mode || 'size'
     
-    var statsContainer = '<div class="statsDropBox"></div>'
+
+    var statsContainer = 
+      `<div 
+        id="statsDropBox"
+        class="statsDropBox"
+        onclick=document.getElementById('fileInput').click();
+      >
+        <input 
+          type="file"
+          id="fileInput"
+          class="hiddenFileInput"
+        />
+        <h2>Drop a JSON file or click to upload</h2>
+      </div>`
 
     if(bundles.length){
       data = '<script type="text/javascript">'
@@ -76,7 +89,31 @@ function bundle(bundles, opts, callback) {
       + JSON.stringify(jsonTree(getStats(bundles)))
       + ');</script>'
       
-      statsContainer = '<div class="rightColumn"><h1>Assets</h1><div class="selectors"><ul class="dataView"/></div><div class="assets"></div></div><div class="leftColumn"><h1>Modules</h1><div class="selectors"><input type="text" id="search" placeholder="Search File .." class="search-box" style="opacity: 0"><div class="modes"><ul class="scale-list"></ul></div><div class="palette-wrap"></div></div><div class="chart"></div></div>'
+      statsContainer = 
+        `<div class="rightColumn">
+          <h1>Assets</h1>
+          <div class="selectors">
+            <ul class="dataView"/>
+          </div>
+          <div class="assets"></div>
+        </div>
+        <div class="leftColumn">
+          <h1>Modules</h1>
+          <div class="selectors">
+            <input
+              type="text"
+              id="search"
+              placeholder="Search File ..."
+              class="search-box"
+              style="opacity: 0"
+            >
+            <div class="modes">
+              <ul class="scale-list"></ul>
+            </div>
+            <div class="palette-wrap"></div>
+          </div>
+          <div class="chart"></div>
+        </div>`
     }
     
   
