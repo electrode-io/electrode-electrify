@@ -4,7 +4,10 @@ import jsonTree from '../json-tree'
 
 domready(() => {
   // stats are already provided and have been placed on the document window
-  if (window.electrify) {createVisualization(window.electrify)}
+  if (window.electrify) {
+    document.getElementById('statsDropBox').style.display = "none"
+    createVisualization(window.electrify)
+  }
 
   //stats will be uploaded by user
   var dragDrop = document.getElementById('statsDropBox');
