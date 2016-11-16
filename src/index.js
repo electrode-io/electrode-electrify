@@ -1,10 +1,10 @@
-import domready from 'domready';
-import createVisualization from './createVisualization'
-import jsonTree from '../json-tree'
+import domready from "domready";
+import createVisualization from "./createVisualization";
+import jsonTree from "../json-tree";
 
 //Add Multiple Event listeners --> https://gist.github.com/juanbrujo/a1f77db1e6f7cb17b42b
 function multipleEventsListeners(elem, events, func) {
-  var event = events.split(' ');
+  var event = events.split(" ");
   for (var i = 0; i < event.length; i++) {
     elem.addEventListener(event[i], func, false);
   }
@@ -13,32 +13,32 @@ function multipleEventsListeners(elem, events, func) {
 domready(() => {
   // stats are already provided and have been placed on the document window
   if (window.electrify) {
-    document.getElementById('statsDropBox').style.display = "none";
+    document.getElementById("statsDropBox").style.display = "none";
     createVisualization(window.electrify);
   } else {
-  //stats will be uploaded by user
-    const visualizationContainer = document.getElementById('visualizations')
+    //stats will be uploaded by user
+    const visualizationContainer = document.getElementById("visualizations")
     visualizationContainer.style.display = "none";
 
-    var dragDropBox = document.getElementById('statsDropBox');
-    var fileInput = document.getElementById('fileInput');
+    var dragDropBox = document.getElementById("statsDropBox");
+    var fileInput = document.getElementById("fileInput");
     
     //
     //change css on dragover
     //
-    multipleEventsListeners(dragDropBox, 'drag dragstart dragend dragover dragenter dragleave drop', (e) =>{
+    multipleEventsListeners(dragDropBox, "drag dragstart dragend dragover dragenter dragleave drop", (e) => {
       e.preventDefault();
       e.stopPropagation();
     })
-    multipleEventsListeners(dragDropBox, 'dragover drageneter', (e) => {
-      e.target.classList.add("dragover")
+    multipleEventsListeners(dragDropBox, "dragover drageneter", (e) => {
+      e.target.classList.add("dragover");
     });
-    multipleEventsListeners(dragDropBox, 'dragleave dragend drop', (e) => {
-      e.target.classList.remove("dragover")
+    multipleEventsListeners(dragDropBox, "dragleave dragend drop", (e) => {
+      e.target.classList.remove("dragover");
     });
 
     dragDropBox.onclick = () => fileInput.click();
-    dragDropBox.addEventListener('drop', (e) => onFileChange(e))
+    dragDropBox.addEventListener("drop", (e) => onFileChange(e));
     
     const readFile = (file, callback) => {
       var reader = new FileReader();
@@ -49,7 +49,6 @@ domready(() => {
       };
       reader.readAsText(file);
     }
-
 
     const handleFileUpload = (jsonText) => {
       const json = JSON.parse(jsonText);
