@@ -22,6 +22,16 @@ Installing should then be as easy as:
 sudo npm install -g electrode-electrify
 ```
 
+## Drag & Drop Stats JSON ##
+
+Electrify supports drag and drop of webpack stats json to visualize it.
+Running it easy:
+```bash
+$ npm run start
+```
+
+![drag](./img/drag.gif)
+
 ## Command-Line Interface ##
 ***Note:*** *you'll need to build your project with the `fields: null` flag if you are using [webpack-stats-plugin], pass a fully generated webpack-stats-object for electrify to render the tree accurately.*
 
