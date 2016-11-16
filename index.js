@@ -80,26 +80,28 @@ function bundle(bundles, opts, callback) {
         </div>
       </div>
     </div>
-    <div class="rightColumn">
-      <h1>Assets</h1>
-      <div class="assets"></div>
-    </div>
-    <div class="leftColumn">
-      <h1>Modules</h1>
-      <div class="selectors">
-        <input
-          type="text"
-          id="search"
-          placeholder="Search File ..."
-          class="search-box"
-          style="opacity: 0"
-        >
-        <div class="modes">
-          <ul class="scale-list"></ul>
-        </div>
-        <div class="palette-wrap"></div>
+    <div id="visualizations">
+      <div class="rightColumn">
+        <h1>Assets</h1>
+        <div class="assets"></div>
       </div>
-      <div class="chart"></div>
+      <div class="leftColumn">
+        <h1>Modules</h1>
+        <div class="selectors">
+          <input
+            type="text"
+            id="search"
+            placeholder="Search File ..."
+            class="search-box"
+            style="opacity: 0"
+          >
+          <div class="modes">
+            <ul class="scale-list"></ul>
+          </div>
+          <div class="palette-wrap"></div>
+        </div>
+        <div class="chart"></div>
+      </div>
     </div>`
 
     if(bundles.length){

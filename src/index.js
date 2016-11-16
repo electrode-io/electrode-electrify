@@ -13,52 +13,65 @@ function multipleEventsListeners(elem, events, func) {
 domready(() => {
   // stats are already provided and have been placed on the document window
   if (window.electrify) {
-    document.getElementById('statsDropBox').style.display = "none"
-    createVisualization(window.electrify)
-  }
-
+    document.getElementById('statsDropBox').style.display = "none";
+    createVisualization(window.electrify);
+  } else {
   //stats will be uploaded by user
-  var dragDropBox = document.getElementById('statsDropBox');
-  var fileInput = document.getElementById('fileInput');
-  
-  dragDropBox.onclick = () => fileInput.click();
+    const visualizationContainer = document.getElementById('visualizations')
+    visualizationContainer.style.display = "none";
 
-  multipleEventsListeners(dragDropBox, 'drag dragstart dragend dragover dragenter dragleave drop', (e) =>{
-    e.preventDefault();
-    e.stopPropagation();
-  })
-  multipleEventsListeners(dragDropBox, 'dragover drageneter', (e) => {
-    e.stopPropagation();
-    e.target.classList.add("dragover")
-  });
-  multipleEventsListeners(dragDropBox, 'dragleave dragend drop', (e) => {
-    e.stopPropagation();
-    e.target.classList.remove("dragover")
-  });
+    var dragDropBox = document.getElementById('statsDropBox');
+    var fileInput = document.getElementById('fileInput');
+    
+    //
+    //change css on dragover
+    //
+    multipleEventsListeners(dragDropBox, 'drag dragstart dragend dragover dragenter dragleave drop', (e) =>{
+      e.preventDefault();
+      e.stopPropagation();
+    })
+    multipleEventsListeners(dragDropBox, 'dragover drageneter', (e) => {
+      if(e.target.id != "statsDropBox") return;
+      e.stopPropagation();
+      e.target.classList.add("dragover")
+    });
+    multipleEventsListeners(dragDropBox, 'dragleave dragend drop', (e) => {
+      if(e.target.id != "statsDropBox") return;
+      e.stopPropagation();
+      e.target.classList.remove("dragover")
+    });
 
-  const readFile = (file, callback) => {
-    var reader = new FileReader();
-    reader.onloadend = ev => {
-        if (ev.target.readyState === FileReader.DONE) {
-            callback(reader.result);
-        }
+
+    dragDropBox.onclick = () => fileInput.click();
+    dragDropBox.addEventListener('drop', (e) => onFileChange(e))
+    
+    const readFile = (file, callback) => {
+      var reader = new FileReader();
+      reader.onloadend = ev => {
+          if (ev.target.readyState === FileReader.DONE) {
+              callback(reader.result);
+          }
+      };
+      reader.readAsText(file);
+    }
+
+    const handleFileUpload = (jsonText) => {
+      const json = JSON.parse(jsonText);
+      const webPackStats = jsonTree(json)
+      removeInputBoxAndRenderElectrify(webPackStats)
     };
-    reader.readAsText(file);
-  }
 
-  const handleFileUpload = (jsonText) => {
-    const json = JSON.parse(jsonText);
-    const webPackStats = jsonTree(json)
-    removeInputAndRenderElectrify(webPackStats)
-  };
+    const onFileChange = (e) => {
+      let file = e.target.files ? e.target.files[0] : e.dataTransfer.files[0]
+      readFile(file, handleFileUpload);
+    }
+    
+    fileInput.onchange = onFileChange;
 
-  const onFileChange = (e) => {
-    readFile(e.target.files[0], handleFileUpload);
-  }
-  
-  fileInput.onchange = onFileChange;
-
-  function removeInputAndRenderElectrify(webPackStats) {
-    createVisualization(webPackStats);
+    function removeInputBoxAndRenderElectrify(webPackStats) {
+      visualizationContainer.style.display = 'block';
+      dragDropBox.style.display = 'none';
+      createVisualization(webPackStats);
+    }
   }
 })
