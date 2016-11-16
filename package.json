@@ -12,8 +12,7 @@
     "demo": "npm run prepublish && opener index.html",
     "rework": "node lib/bundle-css > build/style.css",
     "test": "node test | tap-spec",
-    "start": "npm run start-home",
-    "start-home":"mkdir -p build && npm run browserify && npm run rework && npm run bundle-home && opener index.html"
+    "start": "mkdir -p build && npm run browserify && npm run rework && npm run bundle-home && opener index.html"
   },
   "repository": {
     "type": "git",
