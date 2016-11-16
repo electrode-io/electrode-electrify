@@ -67,22 +67,62 @@ function bundle(bundles, opts, callback) {
   var data = {};
 
   data.mode = opts.mode || 'size'
+    
 
-  data = '<script type="text/javascript">'
-    + ';window.electrify = ('
-    + JSON.stringify(jsonTree(getStats(bundles)))
-    + ');</script>'
+  var statsContainer = 
+    `<div id="statsDropBox" class="statsDropBox">
+      <div class="innerDropBox">
+        <input type="file" id="fileInput" class="hiddenFileInput"/>
+        <img class="uploadImg" src="img/file_upload.png"/>
+        <div class='uploadMsg'>
+          <button>Choose a file</button>
+          <span class="box__dragndrop"> or drag it here.</span>
+        </div>
+      </div>
+    </div>
+    <div id="visualizations">
+      <div class="rightColumn">
+        <h1>Assets</h1>
+        <div class="assets"></div>
+      </div>
+      <div class="leftColumn">
+        <h1>Modules</h1>
+        <div class="selectors">
+          <input
+            type="text"
+            id="search"
+            placeholder="Search File ..."
+            class="search-box"
+            style="opacity: 0"
+          >
+          <div class="modes">
+            <ul class="scale-list"></ul>
+          </div>
+          <div class="palette-wrap"></div>
+        </div>
+        <div class="chart"></div>
+      </div>
+    </div>`
 
-  var script = '<script type="text/javascript">'
+    if(bundles.length){
+      data = '<script type="text/javascript">'
+      + ';window.electrify = ('
+      + JSON.stringify(jsonTree(getStats(bundles)))
+      + ');</script>'
+    }
+    
+  var scripts = '<script type="text/javascript">'
     + bundled().replace(/\/script/gi, '\\/script')
     + '</script>'
 
+
   return callback(null, template()({
-      scripts: script
+      scripts
+    , statsContainer
     , styles: styles()
     , markdown: footer
-    , header: header
-    , data: data
+    , header
+    , data
   }))
 }
 

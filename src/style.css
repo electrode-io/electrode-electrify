@@ -7,7 +7,6 @@
 html, body {
   font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 100;
-  position: relative;
   background: #6A4A3C;
   margin:0;
   padding:0;
@@ -220,4 +219,43 @@ pre, code {
   background-color: #273c4c;
   border: 1px solid rgba(0,0,0,.15);
   border-radius: .25rem;
+}
+
+.dragover {
+  background-color: #f3e8de !important;
+  border-style: solid !important;
+}
+
+.statsDropBox {
+    height: 300px;
+    border-radius: 5px;
+    padding: 10px;
+    width: 30%;
+    background-color: rgba(255, 238, 169, 0.75);
+    margin: 50px auto auto;
+}
+
+.innerDropBox {
+  border-radius: 5px;
+  height: 100%;
+  width:100%;
+  border: 3px dashed rgb(106, 74, 60);
+  background-color: rgba(255,255,255,0);
+}
+
+.hiddenFileInput {
+  width: 0px;
+  height: 0px;
+  visibility: hidden;
+}
+
+.uploadImg {
+  height: 40%;
+  margin: 40px auto;
+  display: block;
+}
+
+.uploadMsg {
+  margin: 0px auto;
+  display: table;
 }
