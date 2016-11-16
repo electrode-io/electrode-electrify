@@ -71,8 +71,14 @@ function bundle(bundles, opts, callback) {
 
   var statsContainer = 
     `<div id="statsDropBox" class="statsDropBox">
-      <input type="file" id="fileInput" class="hiddenFileInput"/>
-      <h2>Drop a JSON file or click to upload</h2>
+      <div class="innerDropBox">
+        <input type="file" id="fileInput" class="hiddenFileInput"/>
+        <img class="uploadImg" src="img/file_upload.png"/>
+        <div class='uploadMsg'>
+          <button>Choose a file</button>
+          <span class="box__dragndrop"> or drag it here.</span>
+        </div>
+      </div>
     </div>
     <div class="rightColumn">
       <h1>Assets</h1>

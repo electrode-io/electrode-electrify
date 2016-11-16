@@ -24,21 +24,6 @@ body {
   position: relative;
   margin: 0 2%;
 }
-.statsDropBox {
-    height: 500px;
-    border-radius: 5px;
-    padding: 5px;
-    width: 40%;
-    border: 3px dashed rgb(106, 74, 60);
-    background-color: rgba(255, 238, 169, 0.75);
-    margin: 50px auto auto;
-}
-
-.hiddenFileInput {
-  width: 0px;
-  height: 0px;
-  visibility: hidden;
-}
 
 .content {
   animation: content 4s;
@@ -235,4 +220,40 @@ pre, code {
   background-color: #273c4c;
   border: 1px solid rgba(0,0,0,.15);
   border-radius: .25rem;
+}
+
+.dragover {
+  background-color: #f3e8de !important;
+}
+
+.statsDropBox {
+    height: 400px;
+    border-radius: 5px;
+    padding: 10px;
+    width: 30%;
+    background-color: rgba(255, 238, 169, 0.75);
+    margin: 50px auto auto;
+}
+
+.innerDropBox {
+  border-radius: 5px;
+  height: 100%;
+  width:100%;
+  border: 3px dashed rgb(106, 74, 60);
+  background-color: rgba(255,255,255,0);
+}
+
+.hiddenFileInput {
+  width: 0px;
+  height: 0px;
+  visibility: hidden;
+}
+.uploadImg {
+  height: 40%;
+  margin: 60px auto;
+  display: block;
+}
+.uploadMsg {
+  margin: 0px auto;
+  display: table;
 }

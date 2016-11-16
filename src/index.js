@@ -2,6 +2,14 @@ import domready from 'domready';
 import createVisualization from './createVisualization'
 import jsonTree from '../json-tree'
 
+//Add Multiple Event listeners --> https://gist.github.com/juanbrujo/a1f77db1e6f7cb17b42b
+function multipleEventsListeners(elem, events, func) {
+  var event = events.split(' ');
+  for (var i = 0; i < event.length; i++) {
+    elem.addEventListener(event[i], func, false);
+  }
+}
+
 domready(() => {
   // stats are already provided and have been placed on the document window
   if (window.electrify) {
@@ -10,9 +18,23 @@ domready(() => {
   }
 
   //stats will be uploaded by user
-  var dragDrop = document.getElementById('statsDropBox');
+  var dragDropBox = document.getElementById('statsDropBox');
   var fileInput = document.getElementById('fileInput');
-  dragDrop.onclick = () => fileInput.click();
+  
+  dragDropBox.onclick = () => fileInput.click();
+
+  multipleEventsListeners(dragDropBox, 'drag dragstart dragend dragover dragenter dragleave drop', (e) =>{
+    e.preventDefault();
+    e.stopPropagation();
+  })
+  multipleEventsListeners(dragDropBox, 'dragover drageneter', (e) => {
+    e.stopPropagation();
+    e.target.classList.add("dragover")
+  });
+  multipleEventsListeners(dragDropBox, 'dragleave dragend drop', (e) => {
+    e.stopPropagation();
+    e.target.classList.remove("dragover")
+  });
 
   const readFile = (file, callback) => {
     var reader = new FileReader();
