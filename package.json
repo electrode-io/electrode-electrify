@@ -1,6 +1,6 @@
 {
   "name": "electrode-electrify",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "description": "A tool based on D3.js for analyzing/visualizing webpack bundle/stats or electrode.io project",
   "main": "index.js",
   "scripts": {
@@ -27,6 +27,7 @@
   "dependencies": {
     "bl": "^0.7.0",
     "browser-unpack": "^0.2.3",
+    "btoa": "^1.1.2",
     "builtins": "0.0.3",
     "commondir": "0.0.1",
     "d3": "^3.4.3",
@@ -38,15 +39,12 @@
     "optimist": "^0.6.1",
     "plucker": "0.0.0",
     "through": "^2.3.4",
-    "uniq": "^1.0.0"
-  },
-  "devDependencies": {
+    "uniq": "^1.0.0",
     "autoprefixer": "^1.1.20140319",
     "babel-preset-es2015": "^6.14.0",
     "babel-preset-react": "^6.11.1",
     "babelify": "^7.3.0",
-    "browserify": "^3.33.0",
-    "btoa": "^1.1.1",
+    "browserify": "^13.1.1",
     "clean-css": "^2.1.6",
     "domready": "^1.0.4",
     "jsdom": "^9.6.0",
@@ -55,7 +53,7 @@
     "rework": "^0.20.2",
     "shelljs": "^0.7.4",
     "tap-spec": "^2.1.2",
-    "tape": "^3.0.3",
+    "tape": "^4.6.2",
     "uglify-js": "^2.4.15"
   },
   "keywords": [

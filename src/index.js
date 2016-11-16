@@ -50,6 +50,7 @@ domready(() => {
       reader.readAsText(file);
     }
 
+
     const handleFileUpload = (jsonText) => {
       const json = JSON.parse(jsonText);
       const webPackStats = jsonTree(json)
