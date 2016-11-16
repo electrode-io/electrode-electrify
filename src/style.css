@@ -7,7 +7,6 @@
 html, body {
   font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 100;
-  position: relative;
   background: #6A4A3C;
   margin:0;
   padding:0;
@@ -224,10 +223,11 @@ pre, code {
 
 .dragover {
   background-color: #f3e8de !important;
+  border-style: solid !important;
 }
 
 .statsDropBox {
-    height: 400px;
+    height: 300px;
     border-radius: 5px;
     padding: 10px;
     width: 30%;
@@ -248,11 +248,13 @@ pre, code {
   height: 0px;
   visibility: hidden;
 }
+
 .uploadImg {
   height: 40%;
-  margin: 60px auto;
+  margin: 40px auto;
   display: block;
 }
+
 .uploadMsg {
   margin: 0px auto;
   display: table;

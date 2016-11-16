@@ -31,16 +31,11 @@ domready(() => {
       e.stopPropagation();
     })
     multipleEventsListeners(dragDropBox, 'dragover drageneter', (e) => {
-      if(e.target.id != "statsDropBox") return;
-      e.stopPropagation();
       e.target.classList.add("dragover")
     });
     multipleEventsListeners(dragDropBox, 'dragleave dragend drop', (e) => {
-      if(e.target.id != "statsDropBox") return;
-      e.stopPropagation();
       e.target.classList.remove("dragover")
     });
-
 
     dragDropBox.onclick = () => fileInput.click();
     dragDropBox.addEventListener('drop', (e) => onFileChange(e))
