@@ -7,7 +7,7 @@ Electrify is an webpack visualizer tool for visualizing and analyzing Webpack bu
 [electrode + webpack](https://github.com/webpack/docs/wiki/node.js-api#stats) project bundles. It's especially handy
 for catching large and/or duplicate modules which might be either bloating up your bundle or slowing down the build process.
 
-Checkout a live working [DEMO](https://goo.gl/1ESxeF).
+Checkout a live working [DEMO](https://goo.gl/aAQvSV).
 
 ![screencast](./img/screencast.gif)
 
