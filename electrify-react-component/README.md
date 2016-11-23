@@ -5,7 +5,7 @@ __COMPONENT DESCRIPTION GOES HERE__
 
 ## Demo & Examples
 
-Live demo: [georgeweiler.github.io/electrode-electrify-react-component](http://georgeweiler.github.io/electrode-electrify-react-component/)
+Live demo: https://goo.gl/aAQvSV
 
 To build the examples locally, run:
 
