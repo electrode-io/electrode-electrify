@@ -1,0 +1,4 @@
+/* Component styles */
+.demoStyle {
+  composes: className from "../src/styles/electrode-electrify-react-component.css";
+}
