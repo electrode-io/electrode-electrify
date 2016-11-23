@@ -7,7 +7,7 @@ Electrify is an webpack visualizer tool for visualizing and analyzing Webpack bu
 [electrode + webpack](https://github.com/webpack/docs/wiki/node.js-api#stats) project bundles. It's especially handy
 for catching large and/or duplicate modules which might be either bloating up your bundle or slowing down the build process.
 
-Checkout a live working [DEMO](https://goo.gl/1ESxeF).
+Checkout a live working [DEMO](https://goo.gl/aAQvSV).
 
 ![screencast](./img/screencast.gif)
 
@@ -21,6 +21,16 @@ Installing should then be as easy as:
 ``` bash
 sudo npm install -g electrode-electrify
 ```
+
+## Drag & Drop Stats JSON ##
+
+Electrify supports drag and drop of webpack stats json to visualize it.
+Running it easy:
+```bash
+$ npm run start
+```
+
+![drag](./img/drag.gif)
 
 ## Command-Line Interface ##
 ***Note:*** *you'll need to build your project with the `fields: null` flag if you are using [webpack-stats-plugin], pass a fully generated webpack-stats-object for electrify to render the tree accurately.*
