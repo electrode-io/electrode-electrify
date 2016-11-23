@@ -1,0 +1,45 @@
+{
+  "name": "electrode-electrify-react-component",
+  "version": "4.3.0",
+  "description": "electrode-electrify-react-component",
+  "main": "lib/index.js",
+  "author": "George Weiler (https://github.com/georgeweiler)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/walmartlabs/electrode-electrify-react-component.git"
+  },
+  "bugs": {
+    "url": "https://github.com/walmartlabs/electrode-electrify-react-component/issues"
+  },
+  "homepage": "https://github.com/walmartlabs/electrode-electrify-react-component",
+  "dependencies": {
+    "d3": "^3.4.3",
+    "lodash": "^4.17.2",
+    "material-ui": "^0.16.4",
+    "prettysize": "0.0.3"
+  },
+  "devDependencies": {
+    "electrode-archetype-react-component": "^1.0.0",
+    "electrode-archetype-react-component-dev": "^1.0.0",
+    "gulp": "^3.9.1"
+  },
+  "engines": {
+    "node": "^4.2.6",
+    "npm": "^3.5.3"
+  },
+  "scripts": {
+    "prepublish": "gulp prepublish",
+    "start": "gulp demo",
+    "test": "gulp check"
+  },
+  "keywords": [
+    "react",
+    "electrode",
+    "electrode-component",
+    "react-component"
+  ],
+  "directories": {
+    "test": "test"
+  },
+  "license": "ISC"
+}
