@@ -3,7 +3,7 @@ import Assets from "./sub-components/assets";
 import Modules from "./sub-components/modules";
 import styles from "../../src/styles/electrify.css";
 
-export default class ElectrodeElectrifyReactComponent19 extends React.Component {
+export default class ElectrodeElectrifyReactComponent extends React.Component {
   render() {
     return (
      <div>
@@ -22,8 +22,8 @@ export default class ElectrodeElectrifyReactComponent19 extends React.Component 
   }
 }
 
-ElectrodeElectrifyReactComponent19.displayName = "ElectrodeElectrifyReactComponent19";
+ElectrodeElectrifyReactComponent.displayName = "ElectrodeElectrifyReactComponent";
 
-ElectrodeElectrifyReactComponent19.propTypes = {};
+ElectrodeElectrifyReactComponent.propTypes = {};
 
-ElectrodeElectrifyReactComponent19.defaultProps = {};
+ElectrodeElectrifyReactComponent.defaultProps = {};
