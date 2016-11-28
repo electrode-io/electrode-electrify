@@ -2,7 +2,6 @@
 
 __COMPONENT DESCRIPTION GOES HERE__
 
-
 ## Demo & Examples
 
 Live demo: https://goo.gl/aAQvSV
