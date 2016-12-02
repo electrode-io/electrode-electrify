@@ -52,7 +52,7 @@ export default function renderElectrify(stats) {
     // percentage size stat below the title
     //
     const percentageSize = svg.append('text')
-      .text(pretty(root.value || root.size))
+      .text('100%')
       .attr('x', 0)
       .attr('y', 20)
       .style('fill', 'white')
@@ -231,6 +231,7 @@ export default function renderElectrify(stats) {
       unhighlight(d)
       title.text(root.name)
       size.text(pretty(root.value || root.size))
+      percentageSize.text(`${(root.value/root.size)*100}%`)
     })
 
     highlight.tween = hoverTween(1)
