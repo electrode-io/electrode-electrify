@@ -1,6 +1,6 @@
 {
   "name": "electrode-electrify-react-component",
-  "version": "4.4.0",
+  "version": "4.4.8",
   "description": "electrode-electrify-react-component",
   "main": "lib/index.js",
   "author": "George Weiler (https://github.com/georgeweiler)",
@@ -15,12 +15,13 @@
   "dependencies": {
     "d3": "^3.4.3",
     "lodash": "^4.17.2",
-    "material-ui": "^0.16.4",
     "prettysize": "0.0.3"
   },
   "devDependencies": {
     "electrode-archetype-react-component": "^1.0.0",
     "electrode-archetype-react-component-dev": "^1.0.0",
+    "material-ui": "^0.16.4",
+    "react-tap-event-plugin": "^2.0.0",
     "gulp": "^3.9.1"
   },
   "engines": {
