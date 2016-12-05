@@ -51,7 +51,7 @@ export default function (d3Data) { //eslint-disable-line func-style, max-stateme
   // percentage size stat below the title
   //
   const percentageSize = svg.append("text")
-    .text(pretty(root.value || root.size))
+    .text("100%")
     .attr("x", 0)
     .attr("y", 20)
     .style("fill", "white")
@@ -252,6 +252,7 @@ export default function (d3Data) { //eslint-disable-line func-style, max-stateme
     unhighlight(d);
     title.text(root.name);
     size.text(pretty(root.value || root.size));
+    percentageSize.text(`${(root.value/root.size)*100}%`);
   });
 
 

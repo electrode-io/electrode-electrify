@@ -1,1 +1,2 @@
-export { default as ElectrodeElectrifyReactComponent } from "./components/electrode-electrify-react-component";
+import ElectrodeElectrifyReactComponent from "./components/electrode-electrify-react-component";
+export default ElectrodeElectrifyReactComponent;
