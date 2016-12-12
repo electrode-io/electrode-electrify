@@ -222,6 +222,7 @@ export default function renderElectrify(stats) {
     groups.on('mouseover', (d) => {
       highlight(d)
       title.text(d.name)
+      .style("font-size", `${Math.min(radius/d.name.length, 40)}px`)
 
       let sizeInPercentage = (d.value/root.value*100).toFixed(2);
       percentageSize.text(sizeInPercentage + " %")
