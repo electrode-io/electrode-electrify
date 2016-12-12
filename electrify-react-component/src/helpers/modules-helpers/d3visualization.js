@@ -243,7 +243,9 @@ export default function (d3Data) { //eslint-disable-line func-style, max-stateme
 
   groups.on("mouseover", (d) => {
     highlight(d);
-    title.text(d.name);
+    title.text(d.name)
+    .style("font-size", `${Math.min(radius/d.name.length, 40)}px`)
+
     const sizeInPercentage = (d.value / root.value * 100).toFixed(2);
     percentageSize.text(`${sizeInPercentage}%`);
     size.text(`(${pretty(d.value || d.size)})`);
