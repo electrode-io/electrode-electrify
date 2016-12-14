@@ -1,5 +1,6 @@
-module.exports = function jsonTree(json) {
-  const modules = json.chunks[0].modules;
+/*eslint-disable no-magic-numbers*/
+
+module.exports = function jsonTree(modules) {
   let maxDepth = 1;
   let rootSize = 0;
   const root = {

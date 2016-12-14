@@ -4,6 +4,9 @@ import schemes from "./schemes";
 import { arc, initArc, bounceHigh, arcTween, hoverTween, rotateTween } from "./d3-utils";
 import createModes, { highlightMode } from "./mode";
 
+/*eslint-disable no-magic-numbers*/
+
+
 const modeInitial = "size";
 const modeFns = {
   count: () => 1,
@@ -92,7 +95,7 @@ export default function (d3Data) { //eslint-disable-line func-style, max-stateme
   //
   const path = groups.append("path")
     .attr("d", initArc)
-    .attr("display", (d) => d.depth ? null : "none")
+    .attr("display", (d) => d.depth ? null : "none") //eslint-disable-line no-arrow-condition
     .style("stroke", "#2B2B2B")
     .style("stroke-width", "0")
     .style("fill-rule", "evenodd")
@@ -244,7 +247,7 @@ export default function (d3Data) { //eslint-disable-line func-style, max-stateme
   groups.on("mouseover", (d) => {
     highlight(d);
     title.text(d.name)
-    .style("font-size", `${Math.min(radius/d.name.length, 40)}px`)
+    .style("font-size", `${Math.min(radius / d.name.length, 40)}px`);
 
     const sizeInPercentage = (d.value / root.value * 100).toFixed(2);
     percentageSize.text(`${sizeInPercentage}%`);
@@ -254,7 +257,7 @@ export default function (d3Data) { //eslint-disable-line func-style, max-stateme
     unhighlight(d);
     title.text(root.name);
     size.text(pretty(root.value || root.size));
-    percentageSize.text(`${(root.value/root.size)*100}%`);
+    percentageSize.text(`${(root.value / root.size) * 100}%`);
   });
 
 

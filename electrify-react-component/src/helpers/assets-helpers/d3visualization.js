@@ -2,6 +2,8 @@ import d3 from "d3";
 import formatSize from "prettysize";
 import {map, each} from "lodash";
 
+/*eslint-disable no-magic-numbers*/
+
 export default function ({refs, data}) { //eslint-disable-line func-style, max-statements
   const width = 850;
   const barHeight = 70;

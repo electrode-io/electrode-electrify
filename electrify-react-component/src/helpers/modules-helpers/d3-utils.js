@@ -1,4 +1,4 @@
-/* eslint-disable max-len */
+/* eslint-disable max-len, no-magic-numbers */
 import d3 from "d3";
 
 export const angle = (x) => x;
@@ -18,7 +18,7 @@ export const initArc = d3.svg.arc()
 // Modified version of d3's built-in bounce easing method:
 // https://github.com/mbostock/d3/blob/51228ccc4b54789f2d92d268e94716d1c016c774/src/interpolate/ease.js#L105-110
 
-export const bounceHigh = (t) => t < 1 / 2.75 ? 7.5625 * t * t //eslint-disable-line no-nested-ternary, max-len
+export const bounceHigh = (t) => t < 1 / 2.75 ? 7.5625 * t * t //eslint-disable-line no-nested-ternary, max-len, no-arrow-condition
   : t < 2 / 2.75 ? 7.5625 * (t -= 1.5 / 2.75) * t + .65 //eslint-disable-line no-nested-ternary, max-len
   : t < 2.5 / 2.75 ? 7.5625 * (t -= 2.25 / 2.75) * t + .85 //eslint-disable-line no-nested-ternary, max-len
   : 7.5625 * (t -= 2.625 / 2.75) * t + .975; //eslint-disable-line no-nested-ternary, max-len

@@ -11,7 +11,7 @@ const WebpackModules = (props) => {
       <CardText expandable={true}>
         <Tabs>
           <Tab label="Electrify">
-            <Electrify pureWebpackStats={props.pureWebpackStats} />
+            <Electrify modules={props.modules} />
           </Tab>
           <Tab label="Modules By Pkg">
             <ModulesByPkg modulesByPkg={props.modulesByPkg} totalSize={props.totalSize}/>
@@ -23,7 +23,7 @@ const WebpackModules = (props) => {
 };
 
 WebpackModules.propTypes = {
-  pureWebpackStats: PropTypes.object,
+  modules: PropTypes.object,
   modulesByPkg: PropTypes.object,
   totalSize: PropTypes.number
 };

@@ -1,5 +1,6 @@
-import d3 from "d3";
+/*eslint-disable no-magic-numbers*/
 
+import d3 from "d3";
 let modes = null;
 
 export default (updateMode, domElements) => {
@@ -57,7 +58,7 @@ export default (updateMode, domElements) => {
         .data(d3.range(0, 16))
         .enter()
         .append("circle").attr("fill", "#fff")
-        .attr("r", (d, i) => type !== "size" ? 3 : (i === 0 || i === 6) ? 6 : 3) //eslint-disable-line no-nested-ternary, max-len
+        .attr("r", (d, i) => type !== "size" ? 3 : (i === 0 || i === 6) ? 6 : 3) //eslint-disable-line no-nested-ternary, max-len, no-arrow-condition
         .attr("transform", (d) => `translate(${[(d % 4) * 10, Math.floor(d / 4) * 10]})`);
     });
 };
