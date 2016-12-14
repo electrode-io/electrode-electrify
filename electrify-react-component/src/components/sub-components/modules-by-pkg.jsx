@@ -2,7 +2,7 @@ import React, {PropTypes} from "react";
 import {List, ListItem} from "material-ui/List";
 import formatSize from "prettysize";
 
-/* eslint-disable max-statements, react/jsx-indent-props */
+/* eslint-disable max-statements, react/jsx-indent-props, no-magic-numbers */
 
 const listPkg = (totalSize, pkg, key) => {
   const nestModules = (modules) => Object.keys(modules).map((name, i) => {

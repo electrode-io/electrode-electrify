@@ -4,13 +4,14 @@ import createD3Visualization from "../../helpers/modules-helpers/d3visualization
 import styles from "../../../src/styles/electrify.css";
 
 export default class D3ElectrifyChart extends React.Component {
-  parsePureWebpackStats() {
-    return bundle(this.props.pureWebpackStats, (err, data) => {
+  parseModules() {
+    return bundle(this.props.modules, (data) => {
       return JSON.parse(data.data);
     });
   }
+
   componentDidMount() {
-    const root = this.parsePureWebpackStats();
+    const root = this.parseModules();
     createD3Visualization({
       refs: this.refs,
       root
@@ -40,5 +41,5 @@ export default class D3ElectrifyChart extends React.Component {
 }
 
 D3ElectrifyChart.propTypes = {
-  pureWebpackStats: PropTypes.object
+  modules: PropTypes.array
 };

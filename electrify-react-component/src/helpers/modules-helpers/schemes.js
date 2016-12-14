@@ -1,3 +1,4 @@
+/*eslint-disable no-magic-numbers*/
 const d3 = require("d3");
 
 const scheme = {
