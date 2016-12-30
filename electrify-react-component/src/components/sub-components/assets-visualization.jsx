@@ -1,6 +1,5 @@
 /* eslint react/prop-types: 0 */
 import React, {PropTypes} from "react";
-//import createD3Visualization from "../../helpers/assets-helpers/d3visualization";
 import styles from "../../../src/styles/base.css";
 import pretty from "prettysize";
 import {sample, max, min, each} from "lodash";
