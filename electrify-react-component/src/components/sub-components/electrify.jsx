@@ -1,7 +1,7 @@
 import React, {PropTypes} from "react";
 import {bundle} from "../../helpers/modules-helpers/parsing-utils";
 import createD3Visualization from "../../helpers/modules-helpers/d3visualization";
-import styles from "../../../src/styles/electrify.css";
+import styles from "../../../src/styles/base.css";
 
 export default class D3ElectrifyChart extends React.Component {
   parseModules() {
@@ -12,29 +12,15 @@ export default class D3ElectrifyChart extends React.Component {
 
   componentDidMount() {
     const root = this.parseModules();
-    createD3Visualization({
-      refs: this.refs,
-      root
-    });
+    createD3Visualization(root, this.refs.svg);
   }
 
   render() {
     return (
-      <div>
-        <input
-          type="search"
-          className={styles.searchBox}
-          placeholder="Search File..."
-          ref="search"
-        />
-        <div className={styles.modes}>
-          <ul ref="scaleList"className={styles.scaleList}>
-          </ul>
-        </div>
+      <div style={{width: 700}}>
         <div className={styles.electrifyChartContainer}>
           <div className ={styles.electrifyChart} ref="svg" />
         </div>
-        <div ref="paletteWrap" />
       </div>
     );
   }

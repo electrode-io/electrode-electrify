@@ -1,14 +1,28 @@
 import React, {PropTypes} from "react";
-import {Card, CardHeader, CardText} from "material-ui/Card";
-import AssetVisualization from "./assets-visualization";
+import AssetsVisualization from "./assets-visualization";
+import styles from "../../../src/styles/base.css";
+import classNames from "classnames/bind";
+const cx = classNames.bind(styles);
 
 const WebpackAssets = (props) => {
-  return (<Card initiallyExpanded={true}>
-	<CardHeader showExpandableButton={true} actAsExpander={true} subtitle="Webpack Assets"/>
-		<CardText expandable={true}>
-		<AssetVisualization assets={props.assets} />
-		</CardText>
-	</Card>);
+  return (
+    <div>
+      <div className={styles.title}>
+        <div className={styles.iconContainer}>
+          <i className={cx([
+            {modulesIcon: true},
+            "material-icons",
+            "md-36",
+            "md-light"
+          ])}>
+            content_copy
+          </i>
+        </div>
+        <h2 className={styles.titleText}>Assets</h2>
+      </div>
+      <AssetsVisualization assets={props.assets} />
+    </div>
+  );
 };
 
 WebpackAssets.propTypes = {
