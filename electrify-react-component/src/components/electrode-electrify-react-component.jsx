@@ -1,5 +1,4 @@
 import React, {PropTypes} from "react";
-
 import Assets from "./sub-components/assets";
 import Modules from "./sub-components/modules";
 import styles from "../../src/styles/base.css";
