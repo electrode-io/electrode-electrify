@@ -80,13 +80,17 @@ class Modules extends Component {
               styles.modulesTab : styles.modulesTabSelected} >
             <h4>Modules by Package</h4>
           </div>
+          {/*
+          TODO: duplicate modules tab
           <div
             onClick={() => this.setState({moduleMode: "duplicates"})}
             className={this.state.moduleMode === "duplicates" ?
               styles.modulesTab : styles.modulesTabSelected } >
             <h4>Duplicate Modules</h4>
-          </div>
+          </div>*/}
         </div>
+        {/*
+        TODO: Add search bar and electrify mode selectors
         <div style={{marginTop: 10}}>
           <form className={styles.searchBar}>
             <input
@@ -119,6 +123,7 @@ class Modules extends Component {
               primaryText="File Count" />
           </IconMenu>
         </div>
+        */}
       </div>
     );
   }
@@ -137,8 +142,8 @@ class Modules extends Component {
           totalSize={this.props.totalSize}
         />
       );
-    case "duplicates":
-      return <h2 style={{color: "white"}}>no duplicates</h2>;
+    // case "duplicates":
+    //   return;
     default:
       return <Electrify modules={this.props.modules}/>;
       // return this.createElectrifyContainer()
