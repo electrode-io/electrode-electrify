@@ -1,44 +1,36 @@
 import d3 from "d3";
 import pretty from "prettysize";
 import schemes from "./schemes";
-import { arc, initArc, bounceHigh, arcTween, hoverTween, rotateTween } from "./d3-utils";
-import createModes, { highlightMode } from "./mode";
+import { arc, initArc, bounceHigh, /*arcTween,*/ hoverTween, rotateTween } from "./d3-utils";
 
 /*eslint-disable no-magic-numbers*/
 
-
-const modeInitial = "size";
-const modeFns = {
-  count: () => 1,
-  size: (d) => d.size
-};
-
-export default function (d3Data) { //eslint-disable-line func-style, max-statements
-  const domElements = d3Data.refs;
-  const root = d3Data.root;
+export default function (root, svgElement) { //eslint-disable-line func-style, max-statements
   const width = 850;
   const height = 500;
   const radius = Math.min(width, height) * 0.45;
   const deg = 120;
+  const modeFns = {
+    count: () => 1,
+    size: (d) => d.size
+  };
 
-  const svg = d3.select(domElements.svg)
+// create repsonsive SVG canvas
+  const svg = d3.select(svgElement)
     .append("svg")
-    //responsive SVG needs these 2 attr and no width or hight attr
     .attr("preserveAspectRatio", "xMinYMin meet")
     .attr("viewBox", `0 0 ${width} ${height}`)
     .style("overflow", "visible")
     .append("g")
     .attr("transform", `translate(${width / 2},${height / 2})`);
 
+//partition data by file size initially
   const partition = d3.layout.partition()
     .sort(null)
     .size([2 * Math.PI, radius * radius])
-    .value(modeFns[modeInitial]);
+    .value(modeFns.size);
 
-  //
-  // Creates the title text in
-  // the center of the rings.
-  //
+//title text in the center of the rings.
   const title = svg.append("text")
     .text(root.name)
     .attr("x", 0)
@@ -49,10 +41,7 @@ export default function (d3Data) { //eslint-disable-line func-style, max-stateme
     .style("alignment-baseline", "middle")
     .style("text-anchor", "middle");
 
-  //
-  // Likewise, this is the file
-  // percentage size stat below the title
-  //
+//file percentage size below the title hardcoded to 100% in intial render
   const percentageSize = svg.append("text")
     .text("100%")
     .attr("x", 0)
@@ -63,10 +52,7 @@ export default function (d3Data) { //eslint-disable-line func-style, max-stateme
     .style("alignment-baseline", "middle")
     .style("text-anchor", "middle");
 
-  //
-  // Likewise, this is the file
-  // size stat below the title
-  //
+//file size below the title
   const size = svg.append("text")
     .text(`("${pretty(root.value || root.size)})`)
     .attr("x", 0)
@@ -76,23 +62,16 @@ export default function (d3Data) { //eslint-disable-line func-style, max-stateme
     .style("alignment-baseline", "middle")
     .style("text-anchor", "middle");
 
-  //
-  // Each arc is wrapped in a group element,
-  // to apply rotation transforms while
-  // changing size and shape.
-  //
+// Each arc is wrapped in a group element to apply rotation transforms while
+// changing size and shape.
   const groups = svg.datum(root).selectAll("g")
     .data(partition.nodes)
     .enter()
     .append("g")
     .attr("transform", `rotate(${deg})`);
-
   const maxdepth = groups[0].reduce((max, el) => Math.max(max, el.__data__.depth), 0);
 
-  //
-  // Actually create the arcs for each
-  // file.
-  //
+// create the arcs for each file.
   const path = groups.append("path")
     .attr("d", initArc)
     .attr("display", (d) => d.depth ? null : "none") //eslint-disable-line no-arrow-condition
@@ -105,6 +84,11 @@ export default function (d3Data) { //eslint-disable-line func-style, max-stateme
       d.el = this; //eslint-disable-line no-invalid-this
     });
 
+//
+// TODO: link this search function to the input in the navbar
+//
+
+  /*
   let found = [];
   const _select = (node, selector) => {
     node.enabled = selector(node);
@@ -120,7 +104,7 @@ export default function (d3Data) { //eslint-disable-line func-style, max-stateme
   _select(root, () => true);
 
   d3.select(domElements.search).on("keyup", function () {
-    const text = this.value.replace(/^\s+/, "").replace(/\s+$/, ""); //eslint-disable-line no-invalid-this, max-len
+    const text = this.value.replace(/^\s+/, "").replace(/\s+$/, "");
     if (text.length > 0) {
       found = [];
       const re = new RegExp(text, "i");
@@ -147,8 +131,9 @@ export default function (d3Data) { //eslint-disable-line func-style, max-stateme
         return d.enabled ? 1.0 : 0.2;
       });
   });
+  */
 
-  // create color scheme
+// color scheme
   function useScheme() { //eslint-disable-line func-style
     const specials = schemes.specials;
     const colors = schemes.main;
@@ -175,9 +160,9 @@ export default function (d3Data) { //eslint-disable-line func-style, max-stateme
       return d.c;
     });
   }
-
   useScheme();
 
+//Rotates the newly created arcs back towards their original position.
   let ptrans = 0;
   path.transition()
     .duration(1000)
@@ -185,18 +170,9 @@ export default function (d3Data) { //eslint-disable-line func-style, max-stateme
     .ease("elastic", 2, 1)
     .delay((d, i) => d.x * 100 + (i % 4) * 250 + d.y / maxdepth * 0.25)
     .attr("d", arc)
-    .each("interrupt", () => {
-      d3.select(domElements.search).transition().duration(200).style("opacity", 1);
-    })
     .each("end", () => {
       ptrans--;
     });
-
-  //
-  // Rotates the newly created
-  // arcs back towards their original
-  // position.
-  //
   let gtrans = 0;
   groups.transition()
     .duration(3250)
@@ -205,11 +181,12 @@ export default function (d3Data) { //eslint-disable-line func-style, max-stateme
     .attrTween("transform", rotateTween(deg))
     .each("end", () => {
       gtrans--;
-      if (ptrans === 0 && gtrans === 0) {
-        d3.select(domElements.search).transition().duration(200).style("opacity", 1);
-      }
+      // if (ptrans === 0 && gtrans === 0) {
+      //   d3.select(domElements.search).transition().duration(200).style("opacity", 1);
+      // }
     });
 
+//highlight & expand relevant arcs on mouseover
   function highlight(d) { //eslint-disable-line func-style
     if (d) {
       d3.select(d.el)
@@ -242,28 +219,30 @@ export default function (d3Data) { //eslint-disable-line func-style, max-stateme
       while (i--) { unhighlight(d.children[i]); }
     }
   }
+
   unhighlight.tween = hoverTween(0);
 
-  groups.on("mouseover", (d) => {
-    highlight(d);
-    title.text(d.name)
-    .style("font-size", `${Math.min(radius / d.name.length, 40)}px`);
+  groups
+    .on("mouseover", (d) => {
+      highlight(d);
+      title.text(d.name)
+      .style("font-size", `${Math.min(radius / d.name.length, 40)}px`);
+      const sizeInPercentage = (d.value / root.value * 100).toFixed(2);
+      percentageSize.text(`${sizeInPercentage}%`);
+      size.text(`(${pretty(d.value || d.size)})`);
+    })
+    .on("mouseout", (d) => {
+      unhighlight(d);
+      title.text(root.name);
+      size.text(pretty(root.value || root.size));
+      percentageSize.text(`${(root.value / root.size) * 100}%`);
+    });
 
-    const sizeInPercentage = (d.value / root.value * 100).toFixed(2);
-    percentageSize.text(`${sizeInPercentage}%`);
-    size.text(`(${pretty(d.value || d.size)})`);
-  })
-  .on("mouseout", (d) => {
-    unhighlight(d);
-    title.text(root.name);
-    size.text(pretty(root.value || root.size));
-    percentageSize.text(`${(root.value / root.size) * 100}%`);
-  });
-
-
+//
+//TODO: link updateMode function to MUI mode selection buttons
+//
+  /*
   const updateMode = function (mode, update) {
-    highlightMode(mode);
-    if (!update) { return; }
     groups
       .data(partition.value(modeFns[mode]).nodes)
       .select("path")
@@ -271,7 +250,5 @@ export default function (d3Data) { //eslint-disable-line func-style, max-stateme
       .duration(1500)
       .attrTween("d", arcTween);
   };
-
-  createModes(updateMode, domElements);
-  updateMode(modeInitial, false);
+  */
 }
