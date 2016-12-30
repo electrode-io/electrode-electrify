@@ -81,7 +81,7 @@ class Modules extends Component {
             <h4>Modules by Package</h4>
           </div>
           {/*
-          ToDo: duplicate modules tab
+          TODO: duplicate modules tab
           <div
             onClick={() => this.setState({moduleMode: "duplicates"})}
             className={this.state.moduleMode === "duplicates" ?
@@ -89,6 +89,8 @@ class Modules extends Component {
             <h4>Duplicate Modules</h4>
           </div>*/}
         </div>
+        {/*
+        TODO: Add search bar and electrify mode selectors
         <div style={{marginTop: 10}}>
           <form className={styles.searchBar}>
             <input
@@ -121,6 +123,7 @@ class Modules extends Component {
               primaryText="File Count" />
           </IconMenu>
         </div>
+        */}
       </div>
     );
   }
