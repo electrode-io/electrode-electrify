@@ -1,0 +1,244 @@
+* {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+/*always show scrollbar in osX*/
+	/*::-webkit-scrollbar {
+	    -webkit-appearance: none;
+	    width: 7px;
+	}
+	::-webkit-scrollbar-thumb {
+	    border-radius: 4px;
+	    background-color: rgba(0,0,0,.5);
+	    -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+	}
+	*/
+  
+.container {
+	border: 2px solid black;
+	margin-bottom: 20px;
+}
+
+.contentContainer {
+  border-radius: 2px;
+  box-shadow: 0 19px 38px 0 rgba(0, 0, 0, 0.3), 0 15px 12px 0 rgba(0, 0, 0, 0.22);
+  border-width: 0.5px;
+  border-image-source: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.4) 5%, rgba(255, 255, 255, 0) 20%, rgba(255, 255, 255, 0));
+  border-image-slice: 1;
+  margin-bottom: 20px;
+  width: 75%;
+  height: 550px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.title {
+	background-color: #999999;
+}
+
+.titleText {
+	display: inline-block;
+	margin-left: 15px;
+}
+
+.icon {
+	height: 50px;
+	display: inline-block;
+	border-right: 2px solid black;
+	padding: 10px;
+}
+
+.leftColumn {
+	float: left;
+	width: 100%;
+	display: inline-block;
+}
+
+.rightColumn {
+	display: inline-block;
+	float: left;
+	width: 100%;
+}
+
+@media (min-width: 900px) {
+	.leftColumn {
+		width: 55%;
+	}
+	.rightColumn {
+		width: 45%;
+	}
+}
+
+.title {
+	background-color: #00294b;
+	position: relative;
+	color: white;
+}
+
+.titleText {
+  display: inline-block;
+  margin-left: 65px;
+  color: white;
+}
+
+.iconContainer{
+  height: 100%;
+  position: absolute;
+  color: white;
+  background-color: #001f38;
+}
+
+.modulesIcon {
+  padding-top: 22px;
+  padding-left: 15px;
+  margin-right: 15px;
+}
+
+.modulesNavBar {
+	background-color: #333333;
+	display: flex;
+	justify-content: space-between;
+}
+
+.searchIcon{
+	color: white;
+	margin-top: 14px;	
+	margin-right: 15px;
+}
+
+.modulesTabSelected {
+  cursor: pointer;
+  margin-left: 15px;
+  display: inline-block;
+  border-top: 7px solid #333333;
+  background-color: transparent;
+}
+
+.modulesTabSelected h4 {
+  color: white;
+  font-family: sans-serif;
+  font-weight: 500;
+}
+
+.modulesTab {
+  cursor: pointer;
+  margin-left: 15px;
+  display: inline-block;
+  border-top: 7px solid white;
+  background-color: transparent;
+}
+
+.modulesTab h4 {
+  color: white;
+  font-family: sans-serif;
+  font-weight: 500;
+}
+
+.modulesContainer {
+	background-color: #333333;
+}
+
+.assetItem {
+	height:100px;
+}
+
+.assetSize {
+	float: left;
+	height: 100px;
+	width: 20%;
+}
+
+.assetSize h4 {
+  margin-right: auto;
+  margin-left: auto;
+  width: 35px;
+}
+
+.assetProgressBarContainer {
+	float: left;
+    height: 100px;
+    width: 80%;
+    background-color: #cccccc;
+    justify-content: center;
+}
+
+.assetProgressBar {
+    height: 20px;
+    width: 90%;
+    margin-top: 10px;
+    background-color: #d8d8d8;
+    margin-left: 10px;
+    border-radius: 25px;
+}
+
+.svgContentResponsive {
+  display: inline-block;
+  position: absolute;
+  top: 10px;
+  left: 0;
+}
+
+.modes {
+  right: 16px;
+  top: 65px;
+}
+
+.searchBox {
+  float: left;
+  margin-left: 15px;
+  margin-top: 10px;
+  width: 28%;
+  font-size: 1rem;
+  line-height: 1.25;
+  padding: 0.5rem 0.75rem;
+  color: #55595c;
+  background-color: rgba(250,250,250, .75);
+  border: 1px solid rgba(0,0,0,.15);
+  border-radius: .25rem;
+  position: inline
+}
+
+.scaleList {
+  float: right;
+  margin-right: 15px;
+  margin-top: 15px;
+  padding: 0;
+  overflow:hidden;
+}
+
+input {
+  outline: none;
+  background: #ededed url(http://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
+  border: solid 1px #ccc;
+  padding: 9px 10px 9px 32px;
+  width: 55px;
+  border-radius: 10em;
+  transition: all .5s;
+}
+
+.searchBar {
+  margin-top: 5px;
+  display: inline-block;
+}
+
+.searchBar input {
+  width: 15px;
+  padding-left: 23px;
+  color: transparent;
+  cursor: pointer;
+}
+
+.searchBar input:hover {
+  background-color: #fff;
+}
+
+.searchBar input:focus {
+  width: 130px;
+  padding-left: 32px;
+  color: #000;
+  background-color: #fff;
+  cursor: auto;
+  border-color: #66CC75;
+}

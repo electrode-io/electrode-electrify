@@ -1,13 +1,14 @@
 import React, {PropTypes} from "react";
+
 import Assets from "./sub-components/assets";
 import Modules from "./sub-components/modules";
-import styles from "../../src/styles/electrify.css";
+import styles from "../../src/styles/base.css";
 
 export default class ElectrodeElectrifyReactComponent extends React.Component {
   render() {
     return (
-      <div>
-        <div className={styles.leftColumn}>
+      <div className={styles.contentContainer}>
+       <div className={styles.leftColumn}>
           <Modules
             modules={this.props.modules}
             modulesByPkg={this.props.modulesByPkg}
@@ -32,3 +33,4 @@ ElectrodeElectrifyReactComponent.propTypes = {
 };
 
 ElectrodeElectrifyReactComponent.defaultProps = {};
+
