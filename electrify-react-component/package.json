@@ -1,6 +1,6 @@
 {
   "name": "electrode-electrify-react-component",
-  "version": "4.4.13",
+  "version": "4.4.14",
   "description": "electrode-electrify-react-component",
   "main": "lib/index.js",
   "author": "George Weiler (https://github.com/georgeweiler)",
@@ -25,8 +25,8 @@
     "gulp": "^3.9.1"
   },
   "engines": {
-    "node": "^4.2.6",
-    "npm": "^3.5.3"
+    "node": "^4.2.6 || ^6.10",
+    "npm": "^3.5.3 || ^3.10"
   },
   "scripts": {
     "prepublish": "gulp prepublish",
