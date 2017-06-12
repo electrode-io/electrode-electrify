@@ -20,7 +20,7 @@
     "electrify": "bin/electrify"
   },
   "author": "Arpan Nanavati <nanavatiarpan@gmail.com>",
-  "license": "Apache 2.0",
+  "license": "Apache-2.0",
   "readmeFilename": "README.md",
   "dependencies": {
     "bl": "^0.7.0",
