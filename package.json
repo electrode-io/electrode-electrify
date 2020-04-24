@@ -48,7 +48,7 @@
     "clean-css": "^2.1.6",
     "domready": "^1.0.4",
     "jsdom": "^9.6.0",
-    "marked": "^0.3.2",
+    "marked": "^0.8.2",
     "prettysize": "0.0.3",
     "rework": "^0.20.2",
     "shelljs": "^0.7.4",
